@@ -156,6 +156,21 @@ def initialize_dict(models_list):
 
    return {model.__module__.split(".")[-1].capitalize(): [] for model in models_list} # Return the initialized dictionary
 
+def format_output(output):
+   """
+   Format the output by:
+   1. Removing extra newlines and empty lines.
+   2. Replacing single newline characters with ' // '.
+   3. Removing ' // ' between empty or whitespace-only lines.
+   
+   :param output: The output string to format.
+   :return: The formatted string.
+   """
+
+   lines = [line.strip() for line in output.splitlines() if line.strip()] # Split the output into lines and filter out lines that are empty or contain only whitespaces
+   
+   return " // ".join(lines) # Join the lines with " // "
+
 def run_tasks(df):
    """
    Run the tasks in the DataFrame.
@@ -175,7 +190,7 @@ def run_tasks(df):
       for model in models_object_list: # Loop through each model object
          model_name = model.__module__.split(".")[-1].capitalize() # Get the model's name
          result = model.run(task_description) # Run the task using the model's "run" method
-         output_dict[model_name].append(result) # Add the result to the output dictionary
+         output_dict[model_name].append(format_output(result)) # Add the result to the output dictionary
    
    return output_dict # Return the output list
 
