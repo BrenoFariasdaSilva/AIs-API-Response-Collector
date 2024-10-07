@@ -18,6 +18,7 @@ class BackgroundColors: # Colors for the terminal
 
 # Execution Constants:
 VERBOSE = False # Verbose mode. If set to True, it will output messages at the start/call of each function (Note: It will output a lot of messages).
+EXECUTE_MODELS = [""] # The AI models to execute
 
 # .Env Constants:
 ENV_PATH = f"./.env" # The path to the .env file
@@ -146,6 +147,16 @@ def filter_df_by_column(df, column_name):
 
    return df[df[column_name].notnull()] # Return the filtered DataFrame
 
+def initialize_dict(models_list=EXECUTE_MODELS):
+   """
+   Initialize a dictionary with empty lists.
+
+   :param dictionary: The dictionary to initialize.
+   :return: The initialized dictionary.
+   """
+
+   return {model: [] for model in models_list} # Return the initialized dictionary
+
 def run_tasks(df):
    """
    Run the tasks in the DataFrame.
@@ -156,7 +167,7 @@ def run_tasks(df):
 
    verbose_output(true_string=f"{BackgroundColors.GREEN}Running the tasks for each Artificial Intelligence model...{Style.RESET_ALL}") # Output the running message
 
-   output_dict = {} # The output dictionary
+   output_dict = initialize_dict() # Initialize the output dictionary
 
    for index, task in df.iterrows(): # Loop through each row in the DataFrame
       print(f"{BackgroundColors.GREEN}Task {index + 1}: {BackgroundColors.CYAN}{task}{Style.RESET_ALL}") # Output the task
