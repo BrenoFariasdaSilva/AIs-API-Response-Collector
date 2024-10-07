@@ -4,7 +4,6 @@ import pandas as pd # For reading CSV files
 import platform # For getting the operating system name
 import sys # For exiting the program
 from colorama import Style # For coloring the terminal
-from dotenv import load_dotenv # For loading environment variables from .env file
 from gemini import GeminiModel # Import the GeminiModel class from gemini.py
 
 # Macros:
@@ -171,10 +170,11 @@ def run_tasks(df):
    models_object_list = get_models_object_list() # Get the list of AI model objects
 
    for index, task in df.iterrows(): # Loop through each row in the DataFrame
-      print(f"{BackgroundColors.GREEN}Task {index + 1}: {BackgroundColors.CYAN}{task}{Style.RESET_ALL}") # Output the task
+      task_description = task.iloc[0] # Get the task description
+      print(f"{BackgroundColors.GREEN}Task {index + 1}: {BackgroundColors.CYAN}{task_description}{Style.RESET_ALL}") # Output the task
       for model in models_object_list: # Loop through each model object
          model_name = model.__class__.__name__ # Get the model's name
-         result = model.run(task) # Run the task using the model's "run" method
+         result = model.run(task_description) # Run the task using the model's "run" method
          output_dict[model_name].append(result) # Add the result to the output dictionary
    
    return output_dict # Return the output list
