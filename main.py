@@ -52,23 +52,6 @@ def verify_filepath_exists(filepath):
 
    return os.path.exists(filepath) # Return True if the file or folder exists, False otherwise
 
-def play_sound():
-   """
-   Plays a sound when the program finishes.
-
-   :return: None
-   """
-
-   if verify_filepath_exists(SOUND_FILE): # If the sound file exists
-      if platform.system() in SOUND_COMMANDS: # If the platform.system() is in the SOUND_COMMANDS dictionary
-         os.system(f"{SOUND_COMMANDS[platform.system()]} {SOUND_FILE}") # Play the sound
-      else: # If the platform.system() is not in the SOUND_COMMANDS dictionary
-         print(f"{BackgroundColors.RED}The {BackgroundColors.CYAN}platform.system(){BackgroundColors.RED} is not in the {BackgroundColors.CYAN}SOUND_COMMANDS dictionary{BackgroundColors.RED}. Please add it!{Style.RESET_ALL}")
-   else: # If the sound file does not exist
-      print(f"{BackgroundColors.RED}Sound file {BackgroundColors.CYAN}{SOUND_FILE}{BackgroundColors.RED} not found. Make sure the file exists.{Style.RESET_ALL}")
-
-atexit.register(play_sound) # Register the function to play a sound when the program finishes
-
 def read_csv_file():
    """
    Reads tasks from the input CSV file using pandas and returns the DataFrame.
@@ -85,6 +68,21 @@ def read_csv_file():
       print(f"{BackgroundColors.RED}CSV file {BackgroundColors.CYAN}{INPUT_CSV_FILE}{BackgroundColors.RED} not found. Make sure the file exists.{Style.RESET_ALL}")
       sys.exit(1) # Exit the program
 
+def play_sound():
+   """
+   Plays a sound when the program finishes.
+
+   :return: None
+   """
+
+   if verify_filepath_exists(SOUND_FILE): # If the sound file exists
+      if platform.system() in SOUND_COMMANDS: # If the platform.system() is in the SOUND_COMMANDS dictionary
+         os.system(f"{SOUND_COMMANDS[platform.system()]} {SOUND_FILE}") # Play the sound
+      else: # If the platform.system() is not in the SOUND_COMMANDS dictionary
+         print(f"{BackgroundColors.RED}The {BackgroundColors.CYAN}platform.system(){BackgroundColors.RED} is not in the {BackgroundColors.CYAN}SOUND_COMMANDS dictionary{BackgroundColors.RED}. Please add it!{Style.RESET_ALL}")
+   else: # If the sound file does not exist
+      print(f"{BackgroundColors.RED}Sound file {BackgroundColors.CYAN}{SOUND_FILE}{BackgroundColors.RED} not found. Make sure the file exists.{Style.RESET_ALL}")
+
 def main():
    """
    Main function.
@@ -95,6 +93,7 @@ def main():
    print(f"{BackgroundColors.CLEAR_TERMINAL}{BackgroundColors.BOLD}{BackgroundColors.GREEN}Welcome to the {BackgroundColors.CYAN}AIs API Response Collector{BackgroundColors.GREEN}!{Style.RESET_ALL}\n\n") # Output the welcome message
 
    print(f"\n{BackgroundColors.BOLD}{BackgroundColors.GREEN}Program finished.{Style.RESET_ALL}") # Output the end of the program message
+   atexit.register(play_sound) # Register the function to play a sound when the program finishes
 
 if __name__ == "__main__":
    """
