@@ -1,6 +1,6 @@
 <div align="center">
   
-# [AIs API Response Collector.](https://github.com/BrenoFariasdaSilva/AIs-API-Response-Collector) <img src="https://github.com/BrenoFariasdaSilva/AIs-API-Response-Collector/blob/main/.assets/Icon/AI.svg"  width="4%" height="4%">
+# [AIs-API-Response-Collector.](https://github.com/BrenoFariasdaSilva/AIs-API-Response-Collector) <img src="https://github.com/BrenoFariasdaSilva/AIs-API-Response-Collector/blob/main/.assets/Icon/AI.svg"  width="4%" height="4%">
 
 </div>
 
@@ -34,7 +34,7 @@ Project-Description.
 </div>
 
 ## Table of Contents
-- [AIs API Response Collector. ](#AIs API Response Collector-)
+- [AIs-API-Response-Collector. ](#ais-api-response-collector-)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Requirements](#requirements)
@@ -50,9 +50,6 @@ Project-Description.
   - [Collaborators](#collaborators)
   - [License](#license)
     - [Apache License 2.0](#apache-license-20)
-    - [Creative Commons Zero v1.0 Universal (CC0 1.0)](#creative-commons-zero-v10-universal-cc0-10)
-    - [MIT License](#mit-license)
-
 
 ## Introduction
 
