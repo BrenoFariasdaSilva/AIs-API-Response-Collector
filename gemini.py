@@ -180,7 +180,7 @@ class GeminiModel:
 
 		self.write_output_to_file(output) # Write the output
 
-		print(f"{BackgroundColors.BOLD}{BackgroundColors.GREEN}Program finished.{Style.RESET_ALL}\n")
+		return output # Return the output
 
 def main():
 	"""
