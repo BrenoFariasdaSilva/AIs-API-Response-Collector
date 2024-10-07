@@ -146,6 +146,19 @@ def filter_df_by_column(df, column_name):
 
    return df[df[column_name].notnull()] # Return the filtered DataFrame
 
+def run_tasks(df):
+   """
+   Run the tasks in the DataFrame.
+
+   :param df: The DataFrame containing the tasks.
+   :return: None
+   """
+
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Running the tasks for each Artificial Intelligence model...{Style.RESET_ALL}") # Output the running message
+
+   for index, row in df.iterrows(): # Loop through each row in the DataFrame
+      print(f"{BackgroundColors.GREEN}Task {index + 1}: {BackgroundColors.CYAN}{row[0]}{Style.RESET_ALL}")
+
 def play_sound():
    """
    Plays a sound when the program finishes.
@@ -175,6 +188,7 @@ def main():
 
    tasks_df = read_csv_file() # Read the tasks from the input CSV file
    filtered_df = filter_df_by_column(tasks_df, tasks_df.columns[0]) # Filter the DataFrame by the first column, which should contain the tasks
+   run_tasks(filtered_df) # Run the tasks
 
    print(f"\n{BackgroundColors.BOLD}{BackgroundColors.GREEN}Program finished.{Style.RESET_ALL}") # Output the end of the program message
    atexit.register(play_sound) # Register the function to play a sound when the program finishes
