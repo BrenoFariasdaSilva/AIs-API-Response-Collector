@@ -200,6 +200,10 @@ def run_tasks(df):
 
    for index, task in df.iterrows(): # Loop through each row in the DataFrame
       print(f"{BackgroundColors.GREEN}Task {index + 1}: {BackgroundColors.CYAN}{task}{Style.RESET_ALL}") # Output the task
+      for model in models_object_list: # Loop through each model object
+         model_name = model.__class__.__name__ # Get the model's name
+         result = model.run(task) # Run the task using the model's "run" method
+         output_dict[model_name].append(result) # Add the result to the output dictionary
    
    return output_dict # Return the output list
 
