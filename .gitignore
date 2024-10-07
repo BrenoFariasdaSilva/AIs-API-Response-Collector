@@ -24,11 +24,13 @@ desktop.ini
 */data/
 */dataset/
 */results/
+*/Output/
+*/Outputs/
 
 # Ignore the Data Files
 *.csv
 *.xlsx
-.txt
+*.txt
 
 # Environments
 .env
