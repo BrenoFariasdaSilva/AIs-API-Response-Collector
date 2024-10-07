@@ -121,18 +121,6 @@ def filter_df_by_column(df, column_name):
 
    return df[[column_name]].dropna() # Return the filtered DataFrame
 
-def initialize_dict(models_list):
-   """
-   Initialize a dictionary with empty lists based on the models' module names.
-
-   :param models_list: The list of model objects.
-   :return: The initialized dictionary.
-   """
-   
-   verbose_output(true_string=f"{BackgroundColors.GREEN}Initializing the output dictionary...{Style.RESET_ALL}") # Output the initialization message
-
-   return {model.__module__.split(".")[-1].capitalize(): [] for model in models_list} # Return the initialized dictionary
-
 def get_models_object_list(models_object_names=EXECUTE_MODELS.values()):
    """
    Get the list of objects of the AI models.
@@ -155,6 +143,18 @@ def get_models_object_list(models_object_names=EXECUTE_MODELS.values()):
          print(f"{BackgroundColors.RED}Error instantiating model '{model_object_name}': {str(e)}{Style.RESET_ALL}")
 
    return model_objects # Return the list of model objects
+
+def initialize_dict(models_list):
+   """
+   Initialize a dictionary with empty lists based on the models' module names.
+
+   :param models_list: The list of model objects.
+   :return: The initialized dictionary.
+   """
+   
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Initializing the output dictionary...{Style.RESET_ALL}") # Output the initialization message
+
+   return {model.__module__.split(".")[-1].capitalize(): [] for model in models_list} # Return the initialized dictionary
 
 def run_tasks(df):
    """
