@@ -151,13 +151,17 @@ def run_tasks(df):
    Run the tasks in the DataFrame.
 
    :param df: The DataFrame containing the tasks.
-   :return: None
+   :return: The output dictionary.
    """
 
    verbose_output(true_string=f"{BackgroundColors.GREEN}Running the tasks for each Artificial Intelligence model...{Style.RESET_ALL}") # Output the running message
 
-   for index, row in df.iterrows(): # Loop through each row in the DataFrame
-      print(f"{BackgroundColors.GREEN}Task {index + 1}: {BackgroundColors.CYAN}{row[0]}{Style.RESET_ALL}")
+   output_dict = {} # The output dictionary
+
+   for index, task in df.iterrows(): # Loop through each row in the DataFrame
+      print(f"{BackgroundColors.GREEN}Task {index + 1}: {BackgroundColors.CYAN}{task}{Style.RESET_ALL}") # Output the task
+
+   return output_dict # Return the output list
 
 def play_sound():
    """
@@ -188,7 +192,7 @@ def main():
 
    tasks_df = read_csv_file() # Read the tasks from the input CSV file
    filtered_df = filter_df_by_column(tasks_df, tasks_df.columns[0]) # Filter the DataFrame by the first column, which should contain the tasks
-   run_tasks(filtered_df) # Run the tasks
+   output_dict = run_tasks(filtered_df) # Run the tasks
 
    print(f"\n{BackgroundColors.BOLD}{BackgroundColors.GREEN}Program finished.{Style.RESET_ALL}") # Output the end of the program message
    atexit.register(play_sound) # Register the function to play a sound when the program finishes
