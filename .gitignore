@@ -25,11 +25,6 @@ desktop.ini
 */dataset/
 */results/
 
-# Ignore the Data Files
-*.csv
-*.xlsx
-.txt
-
 # Environments
 .env
 .venv
