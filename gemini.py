@@ -64,6 +64,23 @@ class GeminiModel:
 			sys.exit(1) # Exit the program
 
 		return api_key # Return the API key
+	
+	def create_directory(self, full_directory_name, relative_directory_name):
+		"""
+		Creates a directory.
+
+		:param full_directory_name: Name of the directory to be created.
+		:param relative_directory_name: Relative name of the directory for terminal display.
+		:return: None
+		"""
+
+		self.verbose_output(true_string=f"{BackgroundColors.GREEN}Creating the {relative_directory_name} directory...{Style.RESET_ALL}") # Output the creation message
+
+		if not os.path.isdir(full_directory_name): # If the directory does not exist
+			try: # Try to create the directory
+				os.makedirs(full_directory_name) # Create the directory
+			except OSError: # If an error occurs
+				print(f"{BackgroundColors.RED}Creation of the {BackgroundColors.GREEN}{relative_directory_name}{BackgroundColors.RED} directory failed.{Style.RESET_ALL}") # Output the error message
 
 def main():
 	"""
