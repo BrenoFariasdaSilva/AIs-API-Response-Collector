@@ -5,6 +5,7 @@ import platform # For getting the operating system name
 import sys # For exiting the program
 from colorama import Style # For coloring the terminal
 from dotenv import load_dotenv # For loading environment variables from .env file
+from gemini_model import GeminiModel # Import the GeminiModel class
 
 # Macros:
 class BackgroundColors: # Colors for the terminal
@@ -161,6 +162,29 @@ def initialize_dict(models_list=EXECUTE_MODELS.keys()):
 
    return {model: [] for model in models_list} # Return the initialized dictionary
 
+def get_models_object_list(models_object_names=EXECUTE_MODELS.values()):
+   """
+   Get the list of objects of the AI models.
+
+   :param models_object_names: The list of AI model object names.
+   :return: The list of AI model objects.
+   """
+
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Getting the list of AI model objects...{Style.RESET_ALL}") # Output the getting message
+   
+   model_objects = [] # Initialize the list of model objects
+   
+   for model_object_name in models_object_names: # Loop through each model object name
+      try: # Try to get the model object
+         model_class = globals()[model_object_name] # Get the model class from the globals
+         model_objects.append(model_class()) # Append the model object to the list
+      except KeyError: # If the model object is not found
+         print(f"{BackgroundColors.RED}Error: Model class '{model_object_name}' not found in globals.{Style.RESET_ALL}")
+      except Exception as e: # If an error occurs
+         print(f"{BackgroundColors.RED}Error instantiating model '{model_object_name}': {str(e)}{Style.RESET_ALL}")
+
+   return model_objects # Return the list of model objects
+
 def run_tasks(df):
    """
    Run the tasks in the DataFrame.
@@ -172,10 +196,11 @@ def run_tasks(df):
    verbose_output(true_string=f"{BackgroundColors.GREEN}Running the tasks for each Artificial Intelligence model...{Style.RESET_ALL}") # Output the running message
 
    output_dict = initialize_dict() # Initialize the output dictionary
+   models_object_list = get_models_object_list() # Get the list of AI model objects
 
    for index, task in df.iterrows(): # Loop through each row in the DataFrame
       print(f"{BackgroundColors.GREEN}Task {index + 1}: {BackgroundColors.CYAN}{task}{Style.RESET_ALL}") # Output the task
-
+   
    return output_dict # Return the output list
 
 def convert_dict_to_df(output_dict):
