@@ -107,6 +107,28 @@ class GeminiModel:
 		)
 
 		return model # Return the model
+	
+	def start_chat_session(self, model, initial_user_message):
+		"""
+		Starts a chat session with the model.
+
+		:param model: The AI model.
+		:param initial_user_message: The initial message to start the session.
+		:return: The chat session.
+		"""
+
+		self.verbose_output(true_string=f"{BackgroundColors.GREEN}Starting the chat session...{Style.RESET_ALL}") # Output the chat session message
+
+		chat_session = model.start_chat( # Start the chat session
+			history=[ # History
+				{
+					"role": "user", # Role
+					"parts": [initial_user_message], # Parts
+				}
+			]
+		)
+
+		return chat_session # Return the chat session
 
 def main():
 	"""
