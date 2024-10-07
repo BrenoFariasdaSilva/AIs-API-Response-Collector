@@ -135,6 +135,17 @@ def read_csv_file():
       print(f"{BackgroundColors.RED}CSV file {BackgroundColors.CYAN}{INPUT_CSV_FILE}{BackgroundColors.RED} not found. Make sure the file exists.{Style.RESET_ALL}")
       sys.exit(1) # Exit the program
 
+def filter_df_by_column(df, column_name):
+   """
+   Filter the DataFrame by a column.
+
+   :param df: The DataFrame to filter.
+   :param column_name: The name of the column to filter by.
+   :return: The filtered DataFrame.
+   """
+
+   return df[df[column_name].notnull()] # Return the filtered DataFrame
+
 def play_sound():
    """
    Plays a sound when the program finishes.
@@ -163,6 +174,7 @@ def main():
    create_directories() # Create the input and output directories
 
    tasks_df = read_csv_file() # Read the tasks from the input CSV file
+   filtered_df = filter_df_by_column(tasks_df, tasks_df.columns[0]) # Filter the DataFrame by the first column, which should contain the tasks
 
    print(f"\n{BackgroundColors.BOLD}{BackgroundColors.GREEN}Program finished.{Style.RESET_ALL}") # Output the end of the program message
    atexit.register(play_sound) # Register the function to play a sound when the program finishes
