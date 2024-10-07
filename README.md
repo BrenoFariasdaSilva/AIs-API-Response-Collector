@@ -1,6 +1,6 @@
 <div align="center">
   
-# [Template-Project.](Repository-URL) <img src="Icon-Image-URL"  width="3%" height="3%">
+# [Template-Project.](Repository-URL) <img src="[Icon-Image-URL](https://github.com/BrenoFariasdaSilva/Template-Project/blob/main/.assets/Icon/AI.svg)"  width="3%" height="3%">
 
 </div>
 
