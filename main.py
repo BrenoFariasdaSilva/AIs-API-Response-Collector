@@ -1,6 +1,8 @@
 import atexit # For playing a sound when the program finishes
 import os # For running a command in the terminal
+import pandas as pd # For reading CSV files
 import platform # For getting the operating system name
+import sys # For exiting the program
 from colorama import Style # For coloring the terminal
 
 # Macros:
@@ -15,6 +17,10 @@ class BackgroundColors: # Colors for the terminal
 
 # Execution Constants:
 VERBOSE = False # Verbose mode. If set to True, it will output messages at the start/call of each function (Note: It will output a lot of messages).
+
+# Input Constants:
+INPUT_DIRECTORY = "./Inputs/" # The path to the input directory
+INPUT_CSV_FILE = f"{INPUT_DIRECTORY}input.csv" # The path to the input CSV file
 
 # Sound Constants:
 SOUND_COMMANDS = {"Darwin": "afplay", "Linux": "aplay", "Windows": "start"} # The commands to play a sound for each operating system
@@ -62,6 +68,22 @@ def play_sound():
       print(f"{BackgroundColors.RED}Sound file {BackgroundColors.CYAN}{SOUND_FILE}{BackgroundColors.RED} not found. Make sure the file exists.{Style.RESET_ALL}")
 
 atexit.register(play_sound) # Register the function to play a sound when the program finishes
+
+def read_csv_file():
+   """
+   Reads tasks from the input CSV file using pandas and returns the DataFrame.
+
+   :return: None
+   """
+
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Reading tasks from CSV file using pandas...{Style.RESET_ALL}") # Output the reading message
+
+   if os.path.exists(INPUT_CSV_FILE): # If the input CSV file exists
+      df = pd.read_csv(INPUT_CSV_FILE) # Reading the CSV into a DataFrame
+      return df # Return the DataFrame
+   else: # If the input CSV file does not exist
+      print(f"{BackgroundColors.RED}CSV file {BackgroundColors.CYAN}{INPUT_CSV_FILE}{BackgroundColors.RED} not found. Make sure the file exists.{Style.RESET_ALL}")
+      sys.exit(1) # Exit the program
 
 def main():
    """
