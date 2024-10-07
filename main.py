@@ -163,6 +163,16 @@ def run_tasks(df):
 
    return output_dict # Return the output list
 
+def convert_dict_to_df(output_dict):
+   """
+   Convert the output dictionary to a DataFrame.
+
+   :param output_dict: The output dictionary.
+   :return: The output DataFrame.
+   """
+
+   return pd.DataFrame(output_dict) # Return the DataFrame
+
 def play_sound():
    """
    Plays a sound when the program finishes.
