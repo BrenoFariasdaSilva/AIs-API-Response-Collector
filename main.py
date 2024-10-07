@@ -145,6 +145,8 @@ def filter_df_by_column(df, column_name):
    :return: The filtered DataFrame.
    """
 
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Filtering the DataFrame by column {BackgroundColors.CYAN}{column_name}{Style.RESET_ALL}") # Output the filtering message
+
    return df[df[column_name].notnull()] # Return the filtered DataFrame
 
 def initialize_dict(models_list=EXECUTE_MODELS):
@@ -154,6 +156,8 @@ def initialize_dict(models_list=EXECUTE_MODELS):
    :param dictionary: The dictionary to initialize.
    :return: The initialized dictionary.
    """
+
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Initializing the output dictionary...{Style.RESET_ALL}") # Output the initialization message
 
    return {model: [] for model in models_list} # Return the initialized dictionary
 
@@ -181,6 +185,8 @@ def convert_dict_to_df(output_dict):
    :param output_dict: The output dictionary.
    :return: The output DataFrame.
    """
+
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Converting the output dictionary to a DataFrame...{Style.RESET_ALL}") # Output the conversion message
 
    return pd.DataFrame(output_dict) # Return the DataFrame
 
