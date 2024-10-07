@@ -88,22 +88,6 @@ def get_env_token(env_path=ENV_PATH, key=ENV_VARIABLE):
 
    return api_key # Return the value of the key
 
-def read_csv_file():
-   """
-   Reads tasks from the input CSV file using pandas and returns the DataFrame.
-
-   :return: None
-   """
-
-   verbose_output(true_string=f"{BackgroundColors.GREEN}Reading tasks from CSV file using pandas...{Style.RESET_ALL}") # Output the reading message
-
-   if os.path.exists(INPUT_CSV_FILE): # If the input CSV file exists
-      df = pd.read_csv(INPUT_CSV_FILE) # Reading the CSV into a DataFrame
-      return df # Return the DataFrame
-   else: # If the input CSV file does not exist
-      print(f"{BackgroundColors.RED}CSV file {BackgroundColors.CYAN}{INPUT_CSV_FILE}{BackgroundColors.RED} not found. Make sure the file exists.{Style.RESET_ALL}")
-      sys.exit(1) # Exit the program
-
 def create_directory(full_directory_name, relative_directory_name=""):
    """
    Creates a directory.
@@ -134,6 +118,22 @@ def create_directories():
 
    create_directory(INPUT_DIRECTORY, INPUT_DIRECTORY.replace(START_PATH, "")) # Create the input directory
    create_directory(OUTPUT_DIRECTORY, OUTPUT_DIRECTORY.replace(START_PATH, "")) # Create the output directory
+
+def read_csv_file():
+   """
+   Reads tasks from the input CSV file using pandas and returns the DataFrame.
+
+   :return: None
+   """
+
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Reading tasks from CSV file using pandas...{Style.RESET_ALL}") # Output the reading message
+
+   if os.path.exists(INPUT_CSV_FILE): # If the input CSV file exists
+      df = pd.read_csv(INPUT_CSV_FILE) # Reading the CSV into a DataFrame
+      return df # Return the DataFrame
+   else: # If the input CSV file does not exist
+      print(f"{BackgroundColors.RED}CSV file {BackgroundColors.CYAN}{INPUT_CSV_FILE}{BackgroundColors.RED} not found. Make sure the file exists.{Style.RESET_ALL}")
+      sys.exit(1) # Exit the program
 
 def play_sound():
    """
