@@ -18,7 +18,7 @@ class BackgroundColors: # Colors for the terminal
 
 # Execution Constants:
 VERBOSE = False # Verbose mode. If set to True, it will output messages at the start/call of each function (Note: It will output a lot of messages).
-EXECUTE_MODELS = [""] # The AI models to execute
+EXECUTE_MODELS = {"Gemini": "GeminiModel"} # The AI models to execute
 
 # .Env Constants:
 ENV_PATH = f"./.env" # The path to the .env file
@@ -149,7 +149,7 @@ def filter_df_by_column(df, column_name):
 
    return df[df[column_name].notnull()] # Return the filtered DataFrame
 
-def initialize_dict(models_list=EXECUTE_MODELS):
+def initialize_dict(models_list=EXECUTE_MODELS.keys()):
    """
    Initialize a dictionary with empty lists.
 
