@@ -173,6 +173,24 @@ def convert_dict_to_df(output_dict):
 
    return pd.DataFrame(output_dict) # Return the DataFrame
 
+def write_output_to_csv(tasks_df, output_dict):
+   """
+   Write the output to a new CSV file with the first column as the input tasks
+   and the other columns as the AI model outputs.
+
+   :param tasks_df: The DataFrame containing the input tasks.
+   :param output_dict: The output dictionary containing model outputs.
+   :return: None
+   """
+
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Writing the output to the output CSV file...{Style.RESET_ALL}") # Output the writing message
+
+   output_df = convert_dict_to_df(output_dict) # Convert the output dictionary to a DataFrame
+   combined_df = pd.concat([tasks_df, output_df], axis=1) # Concatenate the DataFrames along the columns
+   combined_df.to_csv(OUTPUT_CSV_FILE, index=False) # Write the combined DataFrame to the output CSV file
+
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Output written to {BackgroundColors.CYAN}{OUTPUT_CSV_FILE}{Style.RESET_ALL}") # Output the success message
+
 def play_sound():
    """
    Plays a sound when the program finishes.
@@ -203,6 +221,7 @@ def main():
    tasks_df = read_csv_file() # Read the tasks from the input CSV file
    filtered_df = filter_df_by_column(tasks_df, tasks_df.columns[0]) # Filter the DataFrame by the first column, which should contain the tasks
    output_dict = run_tasks(filtered_df) # Run the tasks
+   write_output_to_csv(tasks_df, output_dict) # Write the output to the output CSV file
 
    print(f"\n{BackgroundColors.BOLD}{BackgroundColors.GREEN}Program finished.{Style.RESET_ALL}") # Output the end of the program message
    atexit.register(play_sound) # Register the function to play a sound when the program finishes
