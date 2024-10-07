@@ -82,6 +82,32 @@ class GeminiModel:
 			except OSError: # If an error occurs
 				print(f"{BackgroundColors.RED}Creation of the {BackgroundColors.GREEN}{relative_directory_name}{BackgroundColors.RED} directory failed.{Style.RESET_ALL}") # Output the error message
 
+	def configure_model(self, api_key):
+		"""
+		Configures the Gemini AI model.
+
+		:param api_key: The API key for configuration.
+		:return: The configured model.
+		"""
+
+		self.verbose_output(true_string=f"{BackgroundColors.GREEN}Configuring the Gemini Model...{Style.RESET_ALL}") # Output the configuration message
+
+		genai.configure(api_key=api_key) # Configure the API key
+
+		generation_config = { # Generation configuration
+			"temperature": 0.1, # Temperature
+			"top_p": 0.95, # Top p
+			"top_k": 64, # Top k
+			"max_output_tokens": 8192, # Maximum output tokens
+		} # Generation configuration
+
+		model = genai.GenerativeModel( # Create the model
+			model_name="gemini-1.5-flash", # Model name
+			generation_config=generation_config, # Generation
+		)
+
+		return model # Return the model
+
 def main():
 	"""
 	Main entry point to run the GeminiModel.
