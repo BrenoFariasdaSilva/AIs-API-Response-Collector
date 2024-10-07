@@ -15,22 +15,6 @@ desktop.ini
 *.7z
 .tar.gz
 
-# Ignore the Data Directories
-*/Dados/
-*/Data/
-*/Dataset/
-*/Results/
-*/dados/
-*/data/
-*/dataset/
-*/results/
-*/Output/
-*/Outputs/
-
-# Ignore the Data Files
-*.csv
-*.xlsx
-*.txt
 
 # Environments
 .env
