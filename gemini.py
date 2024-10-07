@@ -13,9 +13,13 @@ class GeminiModel:
 def main():
 	"""
 	Main entry point to run the GeminiModel.
+
+	:param None
+	:return: None
 	"""
 
 	gemini = GeminiModel() # Create the GeminiModel object
+	gemini.run() # Run the GeminiModel
 
 if __name__ == "__main__":
    """
