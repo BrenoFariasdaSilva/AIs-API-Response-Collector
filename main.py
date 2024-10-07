@@ -120,7 +120,7 @@ def filter_df_by_column(df, column_name):
 
    verbose_output(true_string=f"{BackgroundColors.GREEN}Filtering the DataFrame by column {BackgroundColors.CYAN}{column_name}{Style.RESET_ALL}") # Output the filtering message
 
-   return df[df[column_name].notnull()] # Return the filtered DataFrame
+   return df[[column_name]].dropna() # Return the filtered DataFrame
 
 def initialize_dict(models_list=EXECUTE_MODELS.keys()):
    """
