@@ -20,7 +20,7 @@ class BackgroundColors: # Colors for the terminal
 VERBOSE = False # Verbose mode. If set to True, it will output messages at the start/call of each function (Note: It will output a lot of messages).
 
 # .Env Constants:
-ENV_PATH = f".env" # The path to the .env file
+ENV_PATH = f"./.env" # The path to the .env file
 ENV_VARIABLE = f"GITHUB_TOKEN" # The environment variable to load
 
 # File Path Constants:
