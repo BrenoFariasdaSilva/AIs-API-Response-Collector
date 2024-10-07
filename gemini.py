@@ -20,8 +20,11 @@ class GeminiModel:
 	"""
 
 	# Constants:
+	VERBOSE = False # Verbose mode
 	ENV_PATH = "./.env" # The path to the .env file
 	ENV_VARIABLE = "GEMINI_API_KEY" # The environment variable to load
+	OUTPUT_DIRECTORY = "./Outputs/" # The path to the output directory
+	OUTPUT_FILE = f"{OUTPUT_DIRECTORY}Gemini_output.txt" # The path to the output file
 
 	def __init__(self): # Constructor
 		self.api_key = None # The API key
@@ -143,6 +146,20 @@ class GeminiModel:
 
 		output = chat_session.send_message(user_message) # Send the message
 		return output.text # Return the output text
+
+	def write_output_to_file(self, output, file_path=OUTPUT_FILE):
+		"""
+		Writes the chat output to a file.
+
+		:param output: The output text.
+		:param file_path: Path to the file.
+		:return: None
+		"""
+
+		self.verbose_output(true_string=f"{BackgroundColors.GREEN}Writing the output to the file...{Style.RESET_ALL}") # Output the writing message
+
+		with open(file_path, "w") as file: # Open the file
+			file.write(output) # Write the output
 
 def main():
 	"""
