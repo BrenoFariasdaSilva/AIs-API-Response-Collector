@@ -59,9 +59,9 @@ def play_sound():
    :return: None
    """
 
-   if verify_filepath_exists(SOUND_FILE):
+   if verify_filepath_exists(SOUND_FILE): # If the sound file exists
       if platform.system() in SOUND_COMMANDS: # If the platform.system() is in the SOUND_COMMANDS dictionary
-         os.system(f"{SOUND_COMMANDS[platform.system()]} {SOUND_FILE}")
+         os.system(f"{SOUND_COMMANDS[platform.system()]} {SOUND_FILE}") # Play the sound
       else: # If the platform.system() is not in the SOUND_COMMANDS dictionary
          print(f"{BackgroundColors.RED}The {BackgroundColors.CYAN}platform.system(){BackgroundColors.RED} is not in the {BackgroundColors.CYAN}SOUND_COMMANDS dictionary{BackgroundColors.RED}. Please add it!{Style.RESET_ALL}")
    else: # If the sound file does not exist
