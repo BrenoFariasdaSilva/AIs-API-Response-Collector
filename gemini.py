@@ -27,6 +27,20 @@ class GeminiModel:
 		self.api_key = None # The API key
 		self.model = None # The AI model
 
+	def verbose_output(self, true_string="", false_string=""):
+		"""
+		Outputs a message if the VERBOSE constant is set to True.
+
+		:param true_string: The string to be outputted if VERBOSE is True.
+		:param false_string: The string to be outputted if VERBOSE is False.
+		:return: None
+		"""
+
+		if self.VERBOSE and true_string != "": # If VERBOSE is True and the true_string is not empty
+			print(true_string) # Output the true_string
+		elif false_string != "": # If the false_string is not empty
+			print(false_string) # Output the false_string
+
 	def verify_env_file(self, env_path=ENV_PATH, key=ENV_VARIABLE):
 		"""
 		Verify if the .env file exists and if the desired key is present.
