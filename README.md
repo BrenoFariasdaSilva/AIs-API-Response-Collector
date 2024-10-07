@@ -1,6 +1,6 @@
 <div align="center">
   
-# [AIs API Response Collector.](https://github.com/BrenoFariasdaSilva/AIs-API-Response-Collector) <img src="https://github.com/BrenoFariasdaSilva/AIs-API-Response-Collector/blob/main/.assets/Icon/AI.svg"  width="5%" height="5%">
+# [AIs API Response Collector.](https://github.com/BrenoFariasdaSilva/AIs-API-Response-Collector) <img src="https://github.com/BrenoFariasdaSilva/AIs-API-Response-Collector/blob/main/.assets/Icon/AI.svg"  width="4%" height="4%">
 
 </div>
 
