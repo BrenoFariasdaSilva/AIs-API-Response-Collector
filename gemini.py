@@ -161,6 +161,30 @@ class GeminiModel:
 		with open(file_path, "w") as file: # Open the file
 			file.write(output) # Write the output
 
+	def run(self):
+		"""
+		Main function to run the AI interactions.
+
+		:param None
+		:return: None
+		"""
+
+		self.api_key = self.verify_env_file(self.ENV_PATH, self.ENV_VARIABLE) # Verify the .env file and load API key
+
+		self.create_directory(os.path.abspath(self.OUTPUT_DIRECTORY), self.OUTPUT_DIRECTORY.replace(".", "")) # Create the output directory
+
+		self.model = self.configure_model(self.api_key) # Configure the model
+
+		context_message = "Hi, Gemini." # Context message
+		task_message = "Please analyze the provided data." # Task message
+
+		chat_session = self.start_chat_session(self.model, context_message) # Start the chat session
+		output = self.send_message(chat_session, task_message) # Send the message
+
+		self.write_output_to_file(output) # Write the output
+
+		print(f"{BackgroundColors.BOLD}{BackgroundColors.GREEN}Program finished.{Style.RESET_ALL}\n")
+
 def main():
 	"""
 	Main entry point to run the GeminiModel.
