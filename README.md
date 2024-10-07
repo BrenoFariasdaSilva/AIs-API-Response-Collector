@@ -16,14 +16,14 @@ Project-Description.
 
 <div align="center">
 
-![GitHub Code Size in Bytes](https://img.shields.io/github/languages/code-size/BrenoFariasdaSilva/AIs API Response Collector)
-![GitHub Commits](https://img.shields.io/github/commit-activity/t/BrenoFariasDaSilva/AIs API Response Collector/main)
-![GitHub Last Commit](https://img.shields.io/github/last-commit/BrenoFariasdaSilva/AIs API Response Collector)
-![GitHub Forks](https://img.shields.io/github/forks/BrenoFariasDaSilva/AIs API Response Collector)
-![GitHub Language Count](https://img.shields.io/github/languages/count/BrenoFariasDaSilva/AIs API Response Collector)
-![GitHub License](https://img.shields.io/github/license/BrenoFariasdaSilva/AIs API Response Collector)
-![GitHub Stars](https://img.shields.io/github/stars/BrenoFariasdaSilva/AIs API Response Collector)
-![wakatime](https://wakatime.com/badge/github/BrenoFariasdaSilva/AIs API Response Collector.svg)
+![GitHub Code Size in Bytes](https://img.shields.io/github/languages/code-size/BrenoFariasdaSilva/AIs-API-Response-Collector)
+![GitHub Commits](https://img.shields.io/github/commit-activity/t/BrenoFariasDaSilva/AIs-API-Response-Collector/main)
+![GitHub Last Commit](https://img.shields.io/github/last-commit/BrenoFariasdaSilva/AIs-API-Response-Collector)
+![GitHub Forks](https://img.shields.io/github/forks/BrenoFariasDaSilva/AIs-API-Response-Collector)
+![GitHub Language Count](https://img.shields.io/github/languages/count/BrenoFariasDaSilva/AIs-API-Response-Collector)
+![GitHub License](https://img.shields.io/github/license/BrenoFariasdaSilva/AIs-API-Response-Collector)
+![GitHub Stars](https://img.shields.io/github/stars/BrenoFariasdaSilva/AIs-API-Response-Collector)
+![wakatime](https://wakatime.com/badge/github/BrenoFariasdaSilva/AIs-API-Response-Collector.svg)
 
 </div>
 
@@ -69,8 +69,8 @@ Bullet points of the requirements.
 1. Clone the repository with the following command:
 
 ```bash
-git clone https://github.com/BrenoFariasDaSilva/AIs API Response Collector.git
-cd AIs API Response Collector
+git clone https://github.com/BrenoFariasDaSilva/AIs-API-Response-Collector.git
+cd AIs-API-Response-Collector
 ```
 
 ## Installation:
@@ -108,7 +108,7 @@ make dependencies
 
 ### Dataset - Optional
 
-1. Download the dataset from [WEBSITE-HERE]() and place it in this project directory `(/AIs API Response Collector)` and run the following command:
+1. Download the dataset from [WEBSITE-HERE]() and place it in this project directory `(/AIs-API-Response-Collector)` and run the following command:
 
 ```bash
 make dataset
@@ -161,7 +161,7 @@ We thank the following people who contributed to this project:
   <tr>
     <td align="center">
       <a href="#" title="defina o titulo do link">
-        <img src="https://github.com/BrenoFariasdaSilva/AIs API Response Collector/blob/main/.assets/Images/Github.svg" width="100px;" alt="My Profile Picture"/><br>
+        <img src="https://github.com/BrenoFariasdaSilva/AIs-API-Response-Collector/blob/main/.assets/Images/Github.svg" width="100px;" alt="My Profile Picture"/><br>
         <sub>
           <b>Breno Farias da Silva</b>
         </sub>
@@ -169,7 +169,7 @@ We thank the following people who contributed to this project:
     </td>
     <td align="center">
       <a href="#" title="defina o titulo do link">
-        <img src="https://github.com/BrenoFariasdaSilva/AIs API Response Collector/blob/main/.assets/Images/Github.svg" width="100px;" alt="My Profile Picture"/><br>
+        <img src="https://github.com/BrenoFariasdaSilva/AIs-API-Response-Collector/blob/main/.assets/Images/Github.svg" width="100px;" alt="My Profile Picture"/><br>
         <sub>
           <b>Breno Farias da Silva</b>
         </sub>
@@ -177,7 +177,7 @@ We thank the following people who contributed to this project:
     </td>
     <td align="center">
       <a href="#" title="defina o titulo do link">
-        <img src="https://github.com/BrenoFariasdaSilva/AIs API Response Collector/blob/main/.assets/Images/Github.svg" width="100px;" alt="My Profile Picture"/><br>
+        <img src="https://github.com/BrenoFariasdaSilva/AIs-API-Response-Collector/blob/main/.assets/Images/Github.svg" width="100px;" alt="My Profile Picture"/><br>
         <sub>
           <b>Breno Farias da Silva</b>
         </sub>
