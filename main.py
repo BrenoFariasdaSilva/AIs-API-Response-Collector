@@ -13,9 +13,26 @@ class BackgroundColors: # Colors for the terminal
    UNDERLINE = "\033[4m" # Underline
    CLEAR_TERMINAL = "\033[H\033[J" # Clear the terminal
 
+# Execution Constants:
+VERBOSE = False # Verbose mode. If set to True, it will output messages at the start/call of each function (Note: It will output a lot of messages).
+
 # Sound Constants:
 SOUND_COMMANDS = {"Darwin": "afplay", "Linux": "aplay", "Windows": "start"} # The commands to play a sound for each operating system
 SOUND_FILE = "./.assets/Sounds/NotificationSound.wav" # The path to the sound file
+
+def verbose_output(true_string="", false_string=""):
+   """
+   Outputs a message if the VERBOSE constant is set to True.
+
+   :param true_string: The string to be outputted if VERBOSE is True.
+   :param false_string: The string to be outputted if VERBOSE is False.
+   :return: None
+   """
+
+   if VERBOSE and true_string != "": # If VERBOSE is True and the true_string is not empty
+      print(true_string) # Output the true_string
+   elif false_string != "": # If the false_string is not empty
+      print(false_string) # Output the false_string
 
 def play_sound():
    """
