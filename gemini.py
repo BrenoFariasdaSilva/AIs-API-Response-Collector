@@ -161,11 +161,11 @@ class GeminiModel:
 		with open(file_path, "w") as file: # Open the file
 			file.write(output) # Write the output
 
-	def run(self):
+	def run(self, task_message):
 		"""
-		Main function to run the AI interactions.
+		Main function to run the AI model to do what is described in the task message.
 
-		:param None
+		:param task_message: The message to send to the AI model.
 		:return: None
 		"""
 
@@ -175,10 +175,7 @@ class GeminiModel:
 
 		self.model = self.configure_model(self.api_key) # Configure the model
 
-		context_message = "Hi, Gemini." # Context message
-		task_message = "Please analyze the provided data." # Task message
-
-		chat_session = self.start_chat_session(self.model, context_message) # Start the chat session
+		chat_session = self.start_chat_session(self.model, f"Hi, Gemini.") # Start the chat session
 		output = self.send_message(chat_session, task_message) # Send the message
 
 		self.write_output_to_file(output) # Write the output
