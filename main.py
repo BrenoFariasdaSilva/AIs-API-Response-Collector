@@ -104,6 +104,27 @@ def read_csv_file():
       print(f"{BackgroundColors.RED}CSV file {BackgroundColors.CYAN}{INPUT_CSV_FILE}{BackgroundColors.RED} not found. Make sure the file exists.{Style.RESET_ALL}")
       sys.exit(1) # Exit the program
 
+def create_directory(full_directory_name, relative_directory_name=""):
+   """
+   Creates a directory.
+
+   :param full_directory_name: Name of the directory to be created.
+   :param relative_directory_name: Relative name of the directory to be created that will be shown in the terminal.
+   :return: None
+   """
+
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Creating the {BackgroundColors.CYAN}{relative_directory_name}{BackgroundColors.GREEN} directory...{Style.RESET_ALL}")
+
+   relative_directory_name = full_directory_name.replace(START_PATH, "") if relative_directory_name == "" else relative_directory_name # Get the relative directory name if it is not provided
+
+   if os.path.isdir(full_directory_name): # Verify if the directory already exists
+      verbose_output(f"{BackgroundColors.YELLOW}The directory already exists at the path: {BackgroundColors.CYAN}{relative_directory_name}{Style.RESET_ALL}") # Output the verbose message
+      return # Return if the directory already exists
+   try: # Try to create the directory
+      os.makedirs(full_directory_name) # Create the directory
+   except OSError: # If the directory cannot be created
+      print(f"{BackgroundColors.GREEN}The creation of the {BackgroundColors.CYAN}{relative_directory_name}{BackgroundColors.GREEN} directory failed.{Style.RESET_ALL}")
+
 def play_sound():
    """
    Plays a sound when the program finishes.
@@ -129,6 +150,9 @@ def main():
    print(f"{BackgroundColors.CLEAR_TERMINAL}{BackgroundColors.BOLD}{BackgroundColors.GREEN}Welcome to the {BackgroundColors.CYAN}AIs API Response Collector{BackgroundColors.GREEN}!{Style.RESET_ALL}\n\n") # Output the welcome message
 
    get_env_token() # Get the API token from the .env file
+
+   create_directory(INPUT_DIRECTORY, INPUT_DIRECTORY.replace(START_PATH, "")) # Create the input directory
+   create_directory(OUTPUT_DIRECTORY, OUTPUT_DIRECTORY.replace(START_PATH, "")) # Create the output directory
 
    print(f"\n{BackgroundColors.BOLD}{BackgroundColors.GREEN}Program finished.{Style.RESET_ALL}") # Output the end of the program message
    atexit.register(play_sound) # Register the function to play a sound when the program finishes
