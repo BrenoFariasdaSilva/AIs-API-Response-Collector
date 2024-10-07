@@ -19,7 +19,7 @@ class BackgroundColors: # Colors for the terminal
 VERBOSE = False # Verbose mode. If set to True, it will output messages at the start/call of each function (Note: It will output a lot of messages).
 
 # Input Constants:
-INPUT_DIRECTORY = "./Inputs/" # The path to the input directory
+INPUT_DIRECTORY = f"./Inputs/" # The path to the input directory
 INPUT_CSV_FILE = f"{INPUT_DIRECTORY}input.csv" # The path to the input CSV file
 
 # Sound Constants:
