@@ -129,6 +129,20 @@ class GeminiModel:
 		)
 
 		return chat_session # Return the chat session
+	
+	def send_message(self, chat_session, user_message):
+		"""
+		Sends a message to the chat session and gets the output.
+
+		:param chat_session: The current chat session.
+		:param user_message: The message to send.
+		:return: The output from the model.
+		"""
+
+		self.verbose_output(true_string=f"{BackgroundColors.GREEN}Sending the message...{Style.RESET_ALL}") # Output the sending message
+
+		output = chat_session.send_message(user_message) # Send the message
+		return output.text # Return the output text
 
 def main():
 	"""
