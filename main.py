@@ -23,9 +23,16 @@ VERBOSE = False # Verbose mode. If set to True, it will output messages at the s
 ENV_PATH = f".env" # The path to the .env file
 ENV_VARIABLE = f"GITHUB_TOKEN" # The environment variable to load
 
-# Input Constants:
+# Input/Output Directory Constants:
 INPUT_DIRECTORY = f"./Inputs/" # The path to the input directory
+OUTPUT_DIRECTORY = f"./Outputs/" # The path to the output directory
+
+# Input/Output File Path Constants:
 INPUT_CSV_FILE = f"{INPUT_DIRECTORY}input.csv" # The path to the input CSV file
+OUTPUT_CSV_FILE = f"{OUTPUT_DIRECTORY}output.csv" # The path to the output CSV file
+
+# File Path Constants:
+START_PATH = os.getcwd() # The starting path
 
 # Sound Constants:
 SOUND_COMMANDS = {"Darwin": "afplay", "Linux": "aplay", "Windows": "start"} # The commands to play a sound for each operating system
