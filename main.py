@@ -173,7 +173,7 @@ def run_tasks(df):
       task_description = task.iloc[0] # Get the task description
       print(f"{BackgroundColors.GREEN}Task {index + 1}: {BackgroundColors.CYAN}{task_description}{Style.RESET_ALL}") # Output the task
       for model in models_object_list: # Loop through each model object
-         model_name = model.__class__.__name__ # Get the model's name
+         model_name = model.__module__.split(".")[-1].capitalize() # Get the model's name
          result = model.run(task_description) # Run the task using the model's "run" method
          output_dict[model_name].append(result) # Add the result to the output dictionary
    
