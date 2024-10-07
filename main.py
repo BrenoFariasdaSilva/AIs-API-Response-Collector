@@ -121,17 +121,17 @@ def filter_df_by_column(df, column_name):
 
    return df[[column_name]].dropna() # Return the filtered DataFrame
 
-def initialize_dict(models_list=EXECUTE_MODELS.keys()):
+def initialize_dict(models_list):
    """
-   Initialize a dictionary with empty lists.
+   Initialize a dictionary with empty lists based on the models' module names.
 
-   :param dictionary: The dictionary to initialize.
+   :param models_list: The list of model objects.
    :return: The initialized dictionary.
    """
-
+   
    verbose_output(true_string=f"{BackgroundColors.GREEN}Initializing the output dictionary...{Style.RESET_ALL}") # Output the initialization message
 
-   return {model: [] for model in models_list} # Return the initialized dictionary
+   return {model.__module__.split(".")[-1].capitalize(): [] for model in models_list} # Return the initialized dictionary
 
 def get_models_object_list(models_object_names=EXECUTE_MODELS.values()):
    """
@@ -166,8 +166,8 @@ def run_tasks(df):
 
    verbose_output(true_string=f"{BackgroundColors.GREEN}Running the tasks for each Artificial Intelligence model...{Style.RESET_ALL}") # Output the running message
 
-   output_dict = initialize_dict() # Initialize the output dictionary
    models_object_list = get_models_object_list() # Get the list of AI model objects
+   output_dict = initialize_dict(models_object_list) # Initialize the output dictionary
 
    for index, task in df.iterrows(): # Loop through each row in the DataFrame
       task_description = task.iloc[0] # Get the task description
