@@ -5,7 +5,7 @@ import platform # For getting the operating system name
 import sys # For exiting the program
 from colorama import Style # For coloring the terminal
 from dotenv import load_dotenv # For loading environment variables from .env file
-from gemini_model import GeminiModel # Import the GeminiModel class
+from gemini import GeminiModel # Import the GeminiModel class from gemini.py
 
 # Macros:
 class BackgroundColors: # Colors for the terminal
