@@ -6,18 +6,14 @@ import sys # For exiting the program
 from colorama import Style # For coloring the terminal
 from gemini import GeminiModel # Import the GeminiModel class from gemini.py
 from utils import BackgroundColors # Import Classes from utils.py
+from utils import START_PATH, OUTPUT_DIRECTORY # Import Constants from utils.py
 from utils import create_directory, verbose_output, verify_filepath_exists # Import Functions from utils.py
 
 # Execution Constants:
-VERBOSE = False # Verbose mode. If set to True, it will output messages at the start/call of each function (Note: It will output a lot of messages).
 EXECUTE_MODELS = {"Gemini": "GeminiModel"} # The AI models to execute
-
-# File Path Constants:
-START_PATH = os.getcwd() # The starting path
 
 # Input/Output Directory Constants:
 INPUT_DIRECTORY = f"{START_PATH}/Inputs/" # The path to the input directory
-OUTPUT_DIRECTORY = f"{START_PATH}/Outputs/" # The path to the output directory
 
 # Input/Output File Path Constants:
 INPUT_CSV_FILE = f"{INPUT_DIRECTORY}input.csv" # The path to the input CSV file
