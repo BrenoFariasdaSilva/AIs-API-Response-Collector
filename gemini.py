@@ -127,7 +127,7 @@ class GeminiModel:
 		Main function to run the AI model to do what is described in the task message.
 
 		:param task_message: The message to send to the AI model.
-		:return: None
+		:return output: The output text.
 		"""
 
 		self.api_key = self.verify_env_file(self.ENV_PATH, self.ENV_VARIABLE) # Verify the .env file and load API key
