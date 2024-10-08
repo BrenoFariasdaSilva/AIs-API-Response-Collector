@@ -1,3 +1,4 @@
+import atexit # For playing a sound when the program finishes
 import google.generativeai as genai # Import the Google AI Python SDK
 import os # For running a command in the terminal
 import sys # For exiting the program
@@ -5,7 +6,7 @@ from colorama import Style # For coloring the terminal
 from dotenv import load_dotenv # For loading .env files
 from utils import BackgroundColors # Import Classes from ./utils.py
 from utils import OUTPUT_DIRECTORY # Import Constants from ./utils.py
-from utils import create_directory, verbose_output, verify_filepath_exists, write_output_to_file # Import Functions from ./utils.py
+from utils import create_directory, play_sound, verbose_output, verify_filepath_exists, write_output_to_file # Import Functions from ./utils.py
 
 class GeminiModel:
 	"""
@@ -131,10 +132,16 @@ def main():
 	:return: None
 	"""
 
+	print(f"{BackgroundColors.CLEAR_TERMINAL}{BackgroundColors.BOLD}{BackgroundColors.GREEN}Welcome to the {BackgroundColors.CYAN}Gemini AI Model{BackgroundColors.GREEN}!{Style.RESET_ALL}\n\n") # Output the welcome message
+
 	gemini = GeminiModel() # Create the GeminiModel object
-	output = gemini.run() # Run the GeminiModel
+	task_message = f"Translate the following text to Portuguese: 'Hello, how are you?'" # The task message
+	output = gemini.run(task_message) # Run the GeminiModel
 	create_directory(os.path.abspath(OUTPUT_DIRECTORY), OUTPUT_DIRECTORY.replace(".", "")) # Create the output directory
 	write_output_to_file(output, GeminiModel.OUTPUT_FILE) # Write the output to the file
+
+	print(f"\n{BackgroundColors.BOLD}{BackgroundColors.GREEN}Program finished.{Style.RESET_ALL}") # Output the end of the program message
+	atexit.register(play_sound) # Play a sound when the program finishes
 
 if __name__ == "__main__":
    """
