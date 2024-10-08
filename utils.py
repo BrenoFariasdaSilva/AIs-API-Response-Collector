@@ -1,4 +1,5 @@
 import os # For running a command in the terminal
+import platform # For getting the operating system name
 from colorama import Style # For coloring the terminal
 
 # Macros:
@@ -19,6 +20,10 @@ START_PATH = os.getcwd() # The starting path
 
 # Input/Output Directory Constants:
 OUTPUT_DIRECTORY = f"{START_PATH}/Outputs/" # The path to the output directory
+
+# Sound Constants:
+SOUND_COMMANDS = {"Darwin": "afplay", "Linux": "aplay", "Windows": "start"} # The commands to play a sound for each operating system
+SOUND_FILE = "./.assets/Sounds/NotificationSound.wav" # The path to the sound file
 
 def verbose_output(true_string="", false_string=""):
    """
@@ -80,6 +85,21 @@ def write_output_to_file(output, file_path):
 
    with open(file_path, "w") as file: # Open the file
       file.write(output) # Write the output
+
+def play_sound():
+   """
+   Plays a sound when the program finishes.
+
+   :return: None
+   """
+
+   if verify_filepath_exists(SOUND_FILE): # If the sound file exists
+      if platform.system() in SOUND_COMMANDS: # If the platform.system() is in the SOUND_COMMANDS dictionary
+         os.system(f"{SOUND_COMMANDS[platform.system()]} {SOUND_FILE}") # Play the sound
+      else: # If the platform.system() is not in the SOUND_COMMANDS dictionary
+         print(f"{BackgroundColors.RED}The {BackgroundColors.CYAN}platform.system(){BackgroundColors.RED} is not in the {BackgroundColors.CYAN}SOUND_COMMANDS dictionary{BackgroundColors.RED}. Please add it!{Style.RESET_ALL}")
+   else: # If the sound file does not exist
+      print(f"{BackgroundColors.RED}Sound file {BackgroundColors.CYAN}{SOUND_FILE}{BackgroundColors.RED} not found. Make sure the file exists.{Style.RESET_ALL}")
 
 def main():
    """
