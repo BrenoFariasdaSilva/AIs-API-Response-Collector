@@ -4,7 +4,7 @@ import sys # For exiting the program
 from colorama import Style # For coloring the terminal
 from dotenv import load_dotenv # For loading .env files
 from main import BackgroundColors # Import Classes from ./main.py
-from main import OUTPUT_DIRECTORY, VERBOSE # Import Constants from ./main.py
+from main import OUTPUT_DIRECTORY # Import Constants from ./main.py
 from main import create_directory, verbose_output, verify_filepath_exists # Import Functions from ./main.py
 
 class GeminiModel:
