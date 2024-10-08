@@ -1,5 +1,6 @@
 import atexit # For playing a sound when the program finishes
 import os # For running a command in the termina
+import subprocess # For capturing the output of the terminal commands
 from colorama import Style # For coloring the terminal
 from utils import BackgroundColors # Import Classes from ./utils.py
 from utils import OUTPUT_DIRECTORY # Import Constants from ./utils.py
@@ -27,9 +28,17 @@ class CopilotModel:
 		"""
 
 		verbose_output(true_string=f"{BackgroundColors.GREEN}Requesting explanation for: {BackgroundColors.CYAN}{command}{Style.RESET_ALL}") # Output the verbose message
-		os.system(f"gh copilot explain \"{command}\" > {self.OUTPUT_FILE}") # Run the Copilot CLI command
-		with open(self.OUTPUT_FILE, "r") as file: # Open the output file
-			output = file.read() # Read the output
+		process = subprocess.Popen( # Run the Copilot CLI command
+			["gh", "copilot", "explain", command], # The Copilot CLI command
+			stdout=subprocess.PIPE, # Capture the output
+			stderr=subprocess.PIPE, # Capture the error
+			text=True # Set the text mode to True
+		) # Run the Copilot CLI command and capture output
+		output, error = process.communicate() # Get the output and error
+
+		if process.returncode != 0: # If the return code is not 0
+			raise RuntimeError(f"{BackgroundColors.RED}Error explaining command: {BackgroundColors.YELLOW}{error}{Style.RESET_ALL}")
+
 		return output # Return the output
 
 	def suggest_command(self, description):
@@ -41,9 +50,17 @@ class CopilotModel:
 		"""
 
 		verbose_output(true_string=f"{BackgroundColors.GREEN}Requesting command suggestion for: {BackgroundColors.CYAN}{description}{Style.RESET_ALL}") # Output the verbose message
-		os.system(f"gh copilot suggest \"{description}\" > {self.OUTPUT_FILE}") # Run the Copilot CLI command
-		with open(self.OUTPUT_FILE, "r") as file: # Open the output file
-			output = file.read() # Read the output
+		process = subprocess.Popen( # Run the Copilot CLI command
+			["gh", "copilot", "suggest", description], # The Copilot CLI command
+			stdout=subprocess.PIPE, # Capture the output
+			stderr=subprocess.PIPE, # Capture the error
+			text=True # Set the text mode to True
+		) # Run the Copilot CLI command and capture output
+		output, error = process.communicate() # Get the output and error
+
+		if process.returncode != 0: # If the return code is not 0
+			raise RuntimeError(f"{BackgroundColors.RED}Error suggesting command: {BackgroundColors.YELLOW}{error}{Style.RESET_ALL}")
+
 		return output # Return the output
 
 	def run(self, task_message, task_type="explain"):
