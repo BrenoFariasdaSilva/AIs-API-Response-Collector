@@ -117,11 +117,7 @@ class GeminiModel:
 		"""
 
 		self.api_key = self.verify_env_file(self.ENV_PATH, self.ENV_VARIABLE) # Verify the .env file and load API key
-
-		create_directory(os.path.abspath(OUTPUT_DIRECTORY), OUTPUT_DIRECTORY.replace(".", "")) # Create the output directory
-
 		self.model = self.configure_model(self.api_key) # Configure the model
-
 		chat_session = self.start_chat_session(self.model, f"Hi, Gemini.") # Start the chat session
 		output = self.send_message(chat_session, task_message) # Send the message
 
@@ -137,6 +133,7 @@ def main():
 
 	gemini = GeminiModel() # Create the GeminiModel object
 	output = gemini.run() # Run the GeminiModel
+	create_directory(os.path.abspath(OUTPUT_DIRECTORY), OUTPUT_DIRECTORY.replace(".", "")) # Create the output directory
 	write_output_to_file(output, GeminiModel.OUTPUT_FILE) # Write the output to the file
 
 if __name__ == "__main__":
