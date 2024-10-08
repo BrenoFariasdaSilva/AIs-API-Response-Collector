@@ -3,15 +3,7 @@ import os # For running a command in the terminal
 import sys # For exiting the program
 from colorama import Style # For coloring the terminal
 from dotenv import load_dotenv # For loading .env files
-
-class BackgroundColors: # Colors for the terminal
-   CYAN = "\033[96m" # Cyan
-   GREEN = "\033[92m" # Green
-   YELLOW = "\033[93m" # Yellow
-   RED = "\033[91m" # Red
-   BOLD = "\033[1m" # Bold
-   UNDERLINE = "\033[4m" # Underline
-   CLEAR_TERMINAL = "\033[H\033[J" # Clear the terminal
+from main import BackgroundColors # Import Classes from ./main.py
 
 class GeminiModel:
 	"""
