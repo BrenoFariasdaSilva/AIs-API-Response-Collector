@@ -32,6 +32,20 @@ class CopilotModel:
 			output = file.read() # Read the output
 		return output # Return the output
 
+	def suggest_command(self, description):
+		"""
+		Request Copilot to suggest a command based on a description via GitHub CLI.
+
+		:param description: A short description of what you want to achieve.
+		:return output: The suggested command from Copilot.
+		"""
+
+		verbose_output(f"Requesting command suggestion for: {description}") # Output the verbose message
+		os.system(f"gh copilot suggest \"{description}\" > {self.OUTPUT_FILE}") # Run the Copilot CLI command
+		with open(self.OUTPUT_FILE, "r") as file: # Open the output file
+			output = file.read() # Read the output
+		return output # Return the output
+
 	def run(self, task_message, task_type="explain"):
 		"""
 		Main function to run the Copilot CLI to explain or suggest a command.
