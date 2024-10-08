@@ -45,7 +45,7 @@ def main():
 	create_directory(os.path.abspath(OUTPUT_DIRECTORY), OUTPUT_DIRECTORY.replace(".", "")) # Create the output directory
 	write_output_to_file(output, CopilotModel.OUTPUT_FILE) # Write the output to the file
 
-	print(f"{BackgroundColors.BOLD}{BackgroundColors.GREEN}Program finished.{Style.RESET_ALL}") # Output the end of the program message
+	print(f"\n{BackgroundColors.BOLD}{BackgroundColors.GREEN}Program finished.{Style.RESET_ALL}") # Output the end of the program message
 	atexit.register(play_sound) # Register the function to play a sound when the program finishes
 
 if __name__ == "__main__":
