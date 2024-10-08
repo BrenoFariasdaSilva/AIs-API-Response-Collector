@@ -8,7 +8,7 @@ from utils import create_directory, play_sound, verbose_output, write_output_to_
 
 class CopilotModel:
 	"""
-	A class to interact with the Microsoft Copilot AI model.
+	A class to interact with the GitHub Copilot AI model.
 
 	"""
 
@@ -87,7 +87,7 @@ def main():
 	:return: None
 	"""
 
-	print(f"{BackgroundColors.CLEAR_TERMINAL}{BackgroundColors.BOLD}{BackgroundColors.GREEN}Welcome to the {BackgroundColors.CYAN}GitHub Copilot AI Model{BackgroundColors.GREEN}!{Style.RESET_ALL}\n\n") # Output the welcome message
+	print(f"{BackgroundColors.CLEAR_TERMINAL}{BackgroundColors.BOLD}{BackgroundColors.GREEN}Welcome to the {BackgroundColors.CYAN}GitHub Copilot AI Model{BackgroundColors.GREEN}!{Style.RESET_ALL}\n") # Output the welcome message
 
 	copilot = CopilotModel() # Create the CopilotModel object
 	task_message = "Explain how to create a new branch in Git." # The task message
