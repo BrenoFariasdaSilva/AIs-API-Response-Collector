@@ -5,7 +5,7 @@ from colorama import Style # For coloring the terminal
 from dotenv import load_dotenv # For loading .env files
 from utils import BackgroundColors # Import Classes from ./utils.py
 from utils import OUTPUT_DIRECTORY # Import Constants from ./utils.py
-from utils import create_directory, verbose_output, verify_filepath_exists # Import Functions from ./utils.py
+from utils import create_directory, verbose_output, verify_filepath_exists, write_output_to_file # Import Functions from ./utils.py
 
 class GeminiModel:
 	"""
@@ -108,20 +108,6 @@ class GeminiModel:
 		output = chat_session.send_message(user_message) # Send the message
 		return output.text # Return the output text
 
-	def write_output_to_file(self, output, file_path=OUTPUT_FILE):
-		"""
-		Writes the chat output to a file.
-
-		:param output: The output text.
-		:param file_path: Path to the file.
-		:return: None
-		"""
-
-		verbose_output(true_string=f"{BackgroundColors.GREEN}Writing the output to the file...{Style.RESET_ALL}") # Output the writing message
-
-		with open(file_path, "w") as file: # Open the file
-			file.write(output) # Write the output
-
 	def run(self, task_message):
 		"""
 		Main function to run the AI model to do what is described in the task message.
@@ -139,8 +125,6 @@ class GeminiModel:
 		chat_session = self.start_chat_session(self.model, f"Hi, Gemini.") # Start the chat session
 		output = self.send_message(chat_session, task_message) # Send the message
 
-		self.write_output_to_file(output) # Write the output
-
 		return output # Return the output
 
 def main():
@@ -152,7 +136,8 @@ def main():
 	"""
 
 	gemini = GeminiModel() # Create the GeminiModel object
-	gemini.run() # Run the GeminiModel
+	output = gemini.run() # Run the GeminiModel
+	write_output_to_file(output, GeminiModel.OUTPUT_FILE) # Write the output to the file
 
 if __name__ == "__main__":
    """
