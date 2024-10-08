@@ -40,6 +40,7 @@ Project-Description.
   - [Requirements](#requirements)
   - [Setup](#setup)
     - [Clone the repository](#clone-the-repository)
+    - [Generate API Key](#generate-api-key)
   - [Installation:](#installation)
   - [Run Programing Language Code:](#run-programing-language-code)
     - [Dependencies](#dependencies)
@@ -69,6 +70,10 @@ Bullet points of the requirements.
 git clone https://github.com/BrenoFariasDaSilva/AIs-API-Response-Collector.git
 cd AIs-API-Response-Collector
 ```
+
+### Generate API Key
+
+TODO: Add instructions on how to generate an API key for each of the available APIs, including the website and the steps to follow.
 
 ## Installation:
 * Programing Language:
