@@ -18,6 +18,20 @@ class CopilotModel:
 	def __init__(self): # Constructor
 		pass # Do nothing
 
+	def explain_command(self, command):
+		"""
+		Request Copilot to explain a command via GitHub CLI.
+
+		:param command: The command to be explained.
+		:return output: The explanation of the command from Copilot.
+		"""
+
+		verbose_output(f"Requesting explanation for: {command}") # Output the verbose message
+		os.system(f"gh copilot explain \"{command}\" > {self.OUTPUT_FILE}") # Run the Copilot CLI command
+		with open(self.OUTPUT_FILE, "r") as file: # Open the output file
+			output = file.read() # Read the output
+		return output # Return the output
+
 	def run(self, task_message, task_type="explain"):
 		"""
 		Main function to run the Copilot CLI to explain or suggest a command.
