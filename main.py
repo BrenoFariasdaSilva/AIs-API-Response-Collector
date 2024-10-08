@@ -5,9 +5,9 @@ import platform # For getting the operating system name
 import sys # For exiting the program
 from colorama import Style # For coloring the terminal
 from gemini import GeminiModel # Import the GeminiModel class from gemini.py
-from utils import BackgroundColors # Import Classes from utils.py
-from utils import START_PATH, OUTPUT_DIRECTORY # Import Constants from utils.py
-from utils import create_directory, verbose_output, verify_filepath_exists # Import Functions from utils.py
+from utils import BackgroundColors # Import Classes from ./utils.py
+from utils import START_PATH, OUTPUT_DIRECTORY # Import Constants from ./utils.py
+from utils import create_directory, verbose_output, verify_filepath_exists # Import Functions from ./utils.py
 
 # Execution Constants:
 EXECUTE_MODELS = {"Gemini": "GeminiModel"} # The AI models to execute
