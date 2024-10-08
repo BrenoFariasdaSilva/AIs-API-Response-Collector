@@ -39,7 +39,7 @@ class CopilotModel:
 		if process.returncode != 0: # If the return code is not 0
 			raise RuntimeError(f"{BackgroundColors.RED}Error explaining command: {BackgroundColors.YELLOW}{error}{Style.RESET_ALL}")
 
-		return output # Return the output
+		return self.parse_output(output) # Return the output
 
 	def suggest_command(self, description):
 		"""
@@ -61,7 +61,32 @@ class CopilotModel:
 		if process.returncode != 0: # If the return code is not 0
 			raise RuntimeError(f"{BackgroundColors.RED}Error suggesting command: {BackgroundColors.YELLOW}{error}{Style.RESET_ALL}")
 
-		return output # Return the output
+		return self.parse_output(output) # Return the output
+	
+	def parse_output(self, output):
+		"""
+		Parse the output to extract only the relevant response.
+
+		:param output: The raw output from Copilot CLI.
+		:return parsed_output: The cleaned and simplified output.
+		"""
+
+		lines = output.splitlines() # Split lines and filter out empty or unwanted lines
+
+		# We filter out lines with irrelevant text or metadata (like welcome messages, version info)
+		useful_lines = [] # Initialize the useful lines
+		start_collecting = False # Start collecting the output
+		for line in lines: # Loop through each line
+			if "Explanation:" in line: # If the line contains "Explanation:"
+				start_collecting = True # Start collecting after the explanation header
+				continue # Continue to the next line
+			if start_collecting: # If we are collecting the output
+				if line.strip() and not line.startswith("• "): # If the line is not empty and does not start with "• "
+					useful_lines.append(line.strip()) # Append the line to the useful lines
+
+		parsed_output = " ".join(useful_lines).replace("`", "").strip() # Join the useful lines and remove unnecessary spaces
+
+		return parsed_output # Return the parsed output
 
 	def run(self, task_message, task_type="explain"):
 		"""
