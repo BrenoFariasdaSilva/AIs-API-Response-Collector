@@ -3,7 +3,7 @@ import os # For running a command in the termina
 from colorama import Style # For coloring the terminal
 from utils import BackgroundColors # Import Classes from ./utils.py
 from utils import OUTPUT_DIRECTORY # Import Constants from ./utils.py
-from utils import create_directory, play_sound, write_output_to_file # Import Functions from ./utils.py
+from utils import create_directory, play_sound, verbose_output, write_output_to_file # Import Functions from ./utils.py
 
 class CopilotModel:
 	"""
@@ -18,15 +18,21 @@ class CopilotModel:
 	def __init__(self): # Constructor
 		pass # Do nothing
 
-	def run(self, task_message):
+	def run(self, task_message, task_type="explain"):
 		"""
-		Main function to run the AI model to do what is described in the task message.
+		Main function to run the Copilot CLI to explain or suggest a command.
 
-		:param task_message: The message to send to the AI model.
-		:return output: The output text.
+		:param task_message: The command to be explained or description of what you want.
+		:param task_type: Type of task, either "explain" or "suggest".
+		:return output: The output from Copilot.
 		"""
-
-		pass # Do nothing
+	
+		if task_type == "explain": # If the task type is "explain"
+			return self.explain_command(task_message) # Return the explanation of the command
+		elif task_type == "suggest": # If the task type is "suggest"
+			return self.suggest_command(task_message) # Return the suggested command
+		else: # If the task type is invalid
+			raise ValueError(f"Invalid task_type: {task_type}. Use 'explain' or 'suggest'.") # Raise a ValueError
 
 def main():
 	"""
