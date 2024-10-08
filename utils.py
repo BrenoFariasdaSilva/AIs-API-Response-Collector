@@ -67,6 +67,20 @@ def create_directory(full_directory_name, relative_directory_name=""):
    except OSError: # If the directory cannot be created
       print(f"{BackgroundColors.GREEN}The creation of the {BackgroundColors.CYAN}{relative_directory_name}{BackgroundColors.GREEN} directory failed.{Style.RESET_ALL}")
 
+def write_output_to_file(output, file_path):
+   """
+   Writes the chat output to a file.
+
+   :param output: The output text.
+   :param file_path: Path to the file.
+   :return: None
+   """
+
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Writing the output to the file...{Style.RESET_ALL}") # Output the writing message
+
+   with open(file_path, "w") as file: # Open the file
+      file.write(output) # Write the output
+
 def main():
    """
    Main function.
