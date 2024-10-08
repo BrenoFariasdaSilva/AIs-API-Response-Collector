@@ -4,6 +4,7 @@ import sys # For exiting the program
 from colorama import Style # For coloring the terminal
 from dotenv import load_dotenv # For loading .env files
 from main import BackgroundColors # Import Classes from ./main.py
+from main import OUTPUT_DIRECTORY, VERBOSE # Import Constants from ./main.py
 
 class GeminiModel:
 	"""
@@ -12,10 +13,8 @@ class GeminiModel:
 	"""
 
 	# Constants:
-	VERBOSE = False # Verbose mode
 	ENV_PATH = "./.env" # The path to the .env file
 	ENV_VARIABLE = "GEMINI_API_KEY" # The environment variable to load
-	OUTPUT_DIRECTORY = "./Outputs/" # The path to the output directory
 	OUTPUT_FILE = f"{OUTPUT_DIRECTORY}Gemini_output.txt" # The path to the output file
 
 	def __init__(self): # Constructor
@@ -31,7 +30,7 @@ class GeminiModel:
 		:return: None
 		"""
 
-		if self.VERBOSE and true_string != "": # If VERBOSE is True and the true_string is not empty
+		if VERBOSE and true_string != "": # If VERBOSE is True and the true_string is not empty
 			print(true_string) # Output the true_string
 		elif false_string != "": # If the false_string is not empty
 			print(false_string) # Output the false_string
@@ -163,7 +162,7 @@ class GeminiModel:
 
 		self.api_key = self.verify_env_file(self.ENV_PATH, self.ENV_VARIABLE) # Verify the .env file and load API key
 
-		self.create_directory(os.path.abspath(self.OUTPUT_DIRECTORY), self.OUTPUT_DIRECTORY.replace(".", "")) # Create the output directory
+		self.create_directory(os.path.abspath(OUTPUT_DIRECTORY), OUTPUT_DIRECTORY.replace(".", "")) # Create the output directory
 
 		self.model = self.configure_model(self.api_key) # Configure the model
 
