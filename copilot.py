@@ -1,5 +1,5 @@
 import atexit # For playing a sound when the program finishes
-import os # For running a command in the termina
+import os # For running a command in the terminal
 import subprocess # For capturing the output of the terminal commands
 from colorama import Style # For coloring the terminal
 from utils import BackgroundColors # Import Classes from ./utils.py
