@@ -5,6 +5,7 @@ from colorama import Style # For coloring the terminal
 from dotenv import load_dotenv # For loading .env files
 from main import BackgroundColors # Import Classes from ./main.py
 from main import OUTPUT_DIRECTORY, VERBOSE # Import Constants from ./main.py
+from main import create_directory, verbose_output, verify_filepath_exists # Import Functions from ./main.py
 
 class GeminiModel:
 	"""
@@ -21,20 +22,6 @@ class GeminiModel:
 		self.api_key = None # The API key
 		self.model = None # The AI model
 
-	def verbose_output(self, true_string="", false_string=""):
-		"""
-		Outputs a message if the VERBOSE constant is set to True.
-
-		:param true_string: The string to be outputted if VERBOSE is True.
-		:param false_string: The string to be outputted if VERBOSE is False.
-		:return: None
-		"""
-
-		if VERBOSE and true_string != "": # If VERBOSE is True and the true_string is not empty
-			print(true_string) # Output the true_string
-		elif false_string != "": # If the false_string is not empty
-			print(false_string) # Output the false_string
-
 	def verify_env_file(self, env_path=ENV_PATH, key=ENV_VARIABLE):
 		"""
 		Verify if the .env file exists and if the desired key is present.
@@ -44,9 +31,9 @@ class GeminiModel:
 		:return: The value of the key if it exists.
 		"""
 
-		self.verbose_output(true_string=f"{BackgroundColors.GREEN}Verifying the .env file...{Style.RESET_ALL}") # Output the verification message
+		verbose_output(true_string=f"{BackgroundColors.GREEN}Verifying the .env file...{Style.RESET_ALL}") # Output the verification message
 
-		if not os.path.exists(env_path): # If the .env file does not exist
+		if not verify_filepath_exists(env_path): # If the .env file does not exist
 			print(f"{BackgroundColors.RED}.env file not found at {BackgroundColors.CYAN}{env_path}{Style.RESET_ALL}") # Output the error message
 			sys.exit(1) # Exit the program
 
@@ -59,23 +46,6 @@ class GeminiModel:
 
 		return api_key # Return the API key
 	
-	def create_directory(self, full_directory_name, relative_directory_name):
-		"""
-		Creates a directory.
-
-		:param full_directory_name: Name of the directory to be created.
-		:param relative_directory_name: Relative name of the directory for terminal display.
-		:return: None
-		"""
-
-		self.verbose_output(true_string=f"{BackgroundColors.GREEN}Creating the {relative_directory_name} directory...{Style.RESET_ALL}") # Output the creation message
-
-		if not os.path.isdir(full_directory_name): # If the directory does not exist
-			try: # Try to create the directory
-				os.makedirs(full_directory_name) # Create the directory
-			except OSError: # If an error occurs
-				print(f"{BackgroundColors.RED}Creation of the {BackgroundColors.GREEN}{relative_directory_name}{BackgroundColors.RED} directory failed.{Style.RESET_ALL}") # Output the error message
-
 	def configure_model(self, api_key):
 		"""
 		Configures the Gemini AI model.
@@ -84,7 +54,7 @@ class GeminiModel:
 		:return: The configured model.
 		"""
 
-		self.verbose_output(true_string=f"{BackgroundColors.GREEN}Configuring the Gemini Model...{Style.RESET_ALL}") # Output the configuration message
+		verbose_output(true_string=f"{BackgroundColors.GREEN}Configuring the Gemini Model...{Style.RESET_ALL}") # Output the configuration message
 
 		genai.configure(api_key=api_key) # Configure the API key
 
@@ -111,7 +81,7 @@ class GeminiModel:
 		:return: The chat session.
 		"""
 
-		self.verbose_output(true_string=f"{BackgroundColors.GREEN}Starting the chat session...{Style.RESET_ALL}") # Output the chat session message
+		verbose_output(true_string=f"{BackgroundColors.GREEN}Starting the chat session...{Style.RESET_ALL}") # Output the chat session message
 
 		chat_session = model.start_chat( # Start the chat session
 			history=[ # History
@@ -133,7 +103,7 @@ class GeminiModel:
 		:return: The output from the model.
 		"""
 
-		self.verbose_output(true_string=f"{BackgroundColors.GREEN}Sending the message...{Style.RESET_ALL}") # Output the sending message
+		verbose_output(true_string=f"{BackgroundColors.GREEN}Sending the message...{Style.RESET_ALL}") # Output the sending message
 
 		output = chat_session.send_message(user_message) # Send the message
 		return output.text # Return the output text
@@ -147,7 +117,7 @@ class GeminiModel:
 		:return: None
 		"""
 
-		self.verbose_output(true_string=f"{BackgroundColors.GREEN}Writing the output to the file...{Style.RESET_ALL}") # Output the writing message
+		verbose_output(true_string=f"{BackgroundColors.GREEN}Writing the output to the file...{Style.RESET_ALL}") # Output the writing message
 
 		with open(file_path, "w") as file: # Open the file
 			file.write(output) # Write the output
@@ -162,7 +132,7 @@ class GeminiModel:
 
 		self.api_key = self.verify_env_file(self.ENV_PATH, self.ENV_VARIABLE) # Verify the .env file and load API key
 
-		self.create_directory(os.path.abspath(OUTPUT_DIRECTORY), OUTPUT_DIRECTORY.replace(".", "")) # Create the output directory
+		create_directory(os.path.abspath(OUTPUT_DIRECTORY), OUTPUT_DIRECTORY.replace(".", "")) # Create the output directory
 
 		self.model = self.configure_model(self.api_key) # Configure the model
 
