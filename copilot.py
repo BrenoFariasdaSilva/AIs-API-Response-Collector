@@ -26,7 +26,7 @@ class CopilotModel:
 		:return output: The explanation of the command from Copilot.
 		"""
 
-		verbose_output(f"Requesting explanation for: {command}") # Output the verbose message
+		verbose_output(true_string=f"{BackgroundColors.GREEN}Requesting explanation for: {BackgroundColors.CYAN}{command}{Style.RESET_ALL}") # Output the verbose message
 		os.system(f"gh copilot explain \"{command}\" > {self.OUTPUT_FILE}") # Run the Copilot CLI command
 		with open(self.OUTPUT_FILE, "r") as file: # Open the output file
 			output = file.read() # Read the output
@@ -40,7 +40,7 @@ class CopilotModel:
 		:return output: The suggested command from Copilot.
 		"""
 
-		verbose_output(f"Requesting command suggestion for: {description}") # Output the verbose message
+		verbose_output(true_string=f"{BackgroundColors.GREEN}Requesting command suggestion for: {BackgroundColors.CYAN}{description}{Style.RESET_ALL}") # Output the verbose message
 		os.system(f"gh copilot suggest \"{description}\" > {self.OUTPUT_FILE}") # Run the Copilot CLI command
 		with open(self.OUTPUT_FILE, "r") as file: # Open the output file
 			output = file.read() # Read the output
