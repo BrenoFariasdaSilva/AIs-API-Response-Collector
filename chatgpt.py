@@ -23,6 +23,7 @@ class ChatGPTModel:
 	def __init__(self): # Constructor
 		self.api_key = None # The API key
 		self.model = None # The AI model
+		self.client = None # OpenAI client
 
 	def verify_env_file(self, env_path=ENV_PATH, key=ENV_VARIABLE):
 		"""
