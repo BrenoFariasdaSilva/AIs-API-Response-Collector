@@ -88,6 +88,11 @@ def initialize_dict(models_list):
       "Task": [], # Placeholder for task descriptions
       "Expected Output": [], # Placeholder for expected outputs
       "Most Similar Model": [], # Placeholder for the most similar model names
+      "Minimum Similarity": [], # Placeholder for minimum similarity
+      "Maximum Similarity": [], # Placeholder for maximum similarity
+      "Average Similarity": [], # Placeholder for average similarity
+      "Median Similarity": [], # Placeholder for median similarity
+      "Standard Deviation Similarity": [], # Placeholder for standard deviation of similarity
    }
 
    for model in models_list: # Add model names and similarity fields dynamically
