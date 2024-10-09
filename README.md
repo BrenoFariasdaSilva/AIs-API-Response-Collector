@@ -45,6 +45,9 @@ The project aims to facilitate in-depth analysis and comparison of AI models, ma
       - [2. **Gemini (Google)**](#2-gemini-google)
       - [3. **Llama (Meta)**](#3-llama-meta)
       - [4. **Mistral**](#4-mistral)
+    - [Setting Up the `.env` File](#setting-up-the-env-file)
+      - [1. Fill in the API Keys](#1-fill-in-the-api-keys)
+      - [2. Rename the File](#2-rename-the-file)
   - [Installation:](#installation)
   - [Run Programing Language Code:](#run-programing-language-code)
     - [Dependencies](#dependencies)
@@ -103,6 +106,35 @@ To use the Mistral API, follow these steps:
 - Sign in or create an account in the [Mistral Console](https://console.mistral.ai/api-keys/) and generate your API key.
 
 For more information, refer to the [Mistral Getting Started Guide](https://docs.mistral.ai/docs/getting-started).
+
+### Setting Up the `.env` File
+
+To ensure the tool can properly authenticate with each AI API, you will need to provide your API keys in a `.env` file. Follow these steps to configure it:
+
+#### 1. Fill in the API Keys
+- Open the `.env_example` file in the root directory of the project.
+- Replace the placeholder values with your actual API keys, which you should have obtained by following the instructions for each respective AI service.
+
+Here’s what the `.env_example` file looks like:
+
+```plaintext
+CHATGPT_API_KEY=
+GEMINI_API_KEY=
+LLAMA_API_KEY=
+MISTRAL_API_KEY=
+```
+
+
+#### 2. Rename the File
+- After filling in the keys, rename the file from `.env_example` to `.env`.
+
+You can do this using the command line:
+
+```bash
+mv .env_example .env
+```
+
+Now the tool will automatically load the API keys from your `.env` file when making requests to the respective AI models. Make sure the `.env` file is not shared publicly to keep your API keys secure.
 
 ## Installation:
 * Programing Language:
