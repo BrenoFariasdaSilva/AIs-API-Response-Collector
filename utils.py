@@ -1,6 +1,8 @@
 import os # For running a command in the terminal
 import platform # For getting the operating system name
+import sys # For exiting the program
 from colorama import Style # For coloring the terminal
+from dotenv import load_dotenv # For loading .env files
 
 # Macros:
 class BackgroundColors: # Colors for the terminal
@@ -50,6 +52,38 @@ def verify_filepath_exists(filepath):
    verbose_output(f"{BackgroundColors.YELLOW}Verifying if the file or folder exists at the path: {BackgroundColors.CYAN}{filepath}{Style.RESET_ALL}") # Output the verbose message
 
    return os.path.exists(filepath) # Return True if the file or folder exists, False otherwise
+
+def verify_env_file(env_path=None, key=None):
+   """
+   Verify if the .env file exists and if the desired key is present.
+
+   :param env_path: Path to the .env file.
+   :param key: The key to get in the .env file.
+   :return: The value of the key if it exists.
+   """
+
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Verifying the .env file...{Style.RESET_ALL}") # Output the verification message
+      
+   if env_path is None: # If the env_path parameter is not set
+      print(f"{BackgroundColors.RED}The {BackgroundColors.CYAN}env_path{BackgroundColors.RED} parameter is not set.{Style.RESET_ALL}")
+      sys.exit(1) # Exit the program
+   
+   if key is None: # If the key parameter is not set
+      print(f"{BackgroundColors.RED}The {BackgroundColors.CYAN}key{BackgroundColors.RED} parameter is not set.{Style.RESET_ALL}")
+      sys.exit(1) # Exit the program
+
+   if not verify_filepath_exists(env_path): # If the .env file does not exist
+      print(f"{BackgroundColors.RED}.env file not found at {BackgroundColors.CYAN}{env_path}{Style.RESET_ALL}") # Output the error message
+      sys.exit(1) # Exit the program
+
+   load_dotenv(env_path) # Load the .env file
+   api_key = os.getenv(key) # Get the value of the key
+
+   if not api_key: # If the key does not exist
+      print(f"{BackgroundColors.RED}Key {BackgroundColors.CYAN}{key}{BackgroundColors.RED} not found in .env file.{Style.RESET_ALL}") # Output the error message
+      sys.exit(1) # Exit the program
+
+   return api_key # Return the API key
 
 def create_directory(full_directory_name, relative_directory_name=""):
    """
