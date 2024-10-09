@@ -230,10 +230,8 @@ def compute_similarity_for_models(models_object_list, task_results, expected_out
 
    for model in models_object_list: # Loop through each model object
       model_name = model.__module__.split(".")[-1].capitalize() # Get model's name
-      similarity_score = compute_similarity(task_results[model_name], expected_output) # Compute similarity
-      similarity_scores.append((model_name, similarity_score)) # Append model name and score
-
-      output_dict[model_name].append(task_results[model_name]) # Append the model's output to the corresponding list
+      similarity_score = compute_similarity(task_results[model_name], expected_output) # Compute similarity score
+      similarity_scores.append((model_name, similarity_score if similarity_score is not None else 0)) # Append the model name and similarity score to the list
       output_dict[f"{model_name} Similarity"].append(similarity_score if similarity_score is not None else "N/A") # Append the similarity score for each model
 
    return similarity_scores # Return the list of similarity scores
