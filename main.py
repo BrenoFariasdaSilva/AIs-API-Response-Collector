@@ -135,6 +135,21 @@ def get_tasks_attributes(task):
 
    return task_description, expected_output # Return the task description and expected output
 
+def update_output_dict(output_dict, task_description, expected_output):
+   """
+   Update the output dictionary with the task description and expected output.
+
+   :param output_dict: The output dictionary to update.
+   :param task_description: The task description.
+   :param expected_output: The expected output.
+   :return: None
+   """
+
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Updating the output dictionary with the task description and expected output...{Style.RESET_ALL}") # Output the updating message
+
+   output_dict["Task"].append(task_description) # Add the task description to the dictionary
+   output_dict["Expected Output"].append(expected_output) # Add the expected output to the dictionary
+
 def format_output(output):
    """
    Format the output by:
@@ -245,7 +260,7 @@ def run_tasks(df):
 
    for index, task in df.iterrows(): # Loop through each row in the DataFrame
       task_description, expected_output = get_tasks_attributes(task) # Get the task description and expected output
-      output_dict["Expected Output"].append(expected_output) # Add the expected output to the dictionary
+      update_output_dict(output_dict, task_description, expected_output) # Update the output dictionary with the task description and expected output
       print(f"{BackgroundColors.GREEN}Task {BackgroundColors.CYAN}{index + 1:02}{BackgroundColors.GREEN}:\n - {BackgroundColors.GREEN}Task Message: {BackgroundColors.CYAN}{task_description}{BackgroundColors.GREEN}\n - Expected Output: {BackgroundColors.CYAN}{expected_output}{Style.RESET_ALL}\n") # Output the task description and expected output
 
       task_results = run_task_on_each_model(models_object_list, task_description, output_dict) # Run the task on each AI model
