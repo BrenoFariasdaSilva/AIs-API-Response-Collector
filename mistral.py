@@ -5,6 +5,7 @@ import os # For running a command in the terminal
 import sys # For exiting the program
 from colorama import Style # For coloring the terminal
 from dotenv import load_dotenv # For loading .env files
+from mistralai import Mistral # Import the Mistral client
 from utils import BackgroundColors # Import Classes from ./utils.py
 from utils import OUTPUT_DIRECTORY # Import Constants from ./utils.py
 from utils import create_directory, play_sound, verbose_output, verify_filepath_exists, write_output_to_file # Import Functions from ./utils.py
@@ -21,8 +22,9 @@ class MistralModel:
 	OUTPUT_FILE = f"{OUTPUT_DIRECTORY}Mistral_output.txt" # The path to the output file
 
 	def __init__(self): # Constructor
-		self.api_key = None # The API key
-		self.model = None # The AI model
+		self.api_key = self.verify_env_file() # Call verify_env_file to load the API key
+		self.model_name = "mistral-large-latest" # The model name
+		self.client = Mistral(api_key=self.api_key) # Initialize the Mistral client
 
 	def verify_env_file(self, env_path=ENV_PATH, key=ENV_VARIABLE):
 		"""
@@ -59,7 +61,7 @@ class MistralModel:
 		verbose_output(true_string=f"{BackgroundColors.GREEN}Running the ChatGPT AI Model...{Style.RESET_ALL}") # Output the running message
 
 		response = self.client.chat.complete( # Get the response from the AI model
-			model="mistral-large-latest", # The model to use
+			model=self.model_name, # The model to use
 			messages=[ # The messages to send
 				{
 					"role": "user", # The role of the user
