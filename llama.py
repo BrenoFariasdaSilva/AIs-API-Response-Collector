@@ -22,9 +22,9 @@ class LlamaModel:
 	OUTPUT_FILE = f"{OUTPUT_DIRECTORY}Llama_output.txt" # The path to the output file
 
 	def __init__(self): # Constructor
-		self.api_key = None # The API key
-		self.model = None # The AI model
-		self.client = None # Llama client
+		self.api_key = self.verify_env_file() # Call verify_env_file to load the API key
+		self.model_name = "llama3.1-70b" # The model name
+		self.client = OpenAI(api_key=self.api_key, base_url="https://api.llama-api.com") # Initialize the Llama client
 
 	def verify_env_file(self, env_path=ENV_PATH, key=ENV_VARIABLE):
 		"""
@@ -61,7 +61,7 @@ class LlamaModel:
 		verbose_output(true_string=f"{BackgroundColors.GREEN}Running the Llama AI Model...{Style.RESET_ALL}") # Output the running message
 
 		response = self.client.chat.completions.create(
-			model="llama3.1-70b", # The model to use
+			model=self.model_name, # The model to use
 			messages=[ # The messages to send
 				{"role": "user", "content": task_message} # User message
 			],
