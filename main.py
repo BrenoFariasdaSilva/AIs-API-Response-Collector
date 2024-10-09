@@ -75,8 +75,7 @@ def get_models_object_list(models_object_names=EXECUTE_MODELS.values()):
 
 def initialize_dict(models_list):
    """
-   Initialize a dictionary with empty lists based on the models' module names,
-   and include fields for "Expected Output" and "Similarity".
+   Initialize a dictionary with empty lists based on the models' module names, and include fields for "Expected Output" and similarity scores for the most similar models.
 
    :param models_list: The list of model objects.
    :return: The initialized dictionary.
@@ -84,11 +83,20 @@ def initialize_dict(models_list):
    
    verbose_output(true_string=f"{BackgroundColors.GREEN}Initializing the output dictionary...{Style.RESET_ALL}") # Output the initialization message
 
-   output_dict = {model.__module__.split(".")[-1].capitalize(): [] for model in models_list} # Initialize the dictionary with model outputs and additional fields
-   
-   output_dict["Expected Output"] = [] # To store the "Expected Output"
-   output_dict["Similarity"] = [] # To store the similarity score
-   
+   output_dict = { # Initialize the output dictionary
+      "Task": [], # Placeholder for task descriptions
+      "Expected Output": [], # Placeholder for expected outputs
+      "Most Similar Model": [], # Placeholder for the most similar model names
+   }
+
+   for model in models_list: # Add model names and similarity fields dynamically
+      model_name = model.__module__.split(".")[-1].capitalize() # Extract model name
+      output_dict[model_name] = [] # Initialize an empty list for the model output
+      output_dict[f"{model_name} Similarity"] = [] # Initialize an empty list for similarity scores
+
+   # print the columns names
+   print(f"{BackgroundColors.CYAN}Columns in the output CSV file:{Style.RESET_ALL}\n{list(output_dict.keys())}\n")
+
    return output_dict # Return the initialized dictionary
 
 def get_task_description(task):
