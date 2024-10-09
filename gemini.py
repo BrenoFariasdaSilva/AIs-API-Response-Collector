@@ -22,7 +22,8 @@ class GeminiModel:
 	OUTPUT_FILE = f"{OUTPUT_DIRECTORY}Gemini_output.txt" # The path to the output file
 
 	def __init__(self): # Constructor
-		self.api_key = None # The API key
+		self.api_key = self.verify_env_file() # Verify the .env file and load the API key
+		self.model_name = "gemini-1.5-flash" # The model name
 		self.model = None # The AI model
 
 	def verify_env_file(self, env_path=ENV_PATH, key=ENV_VARIABLE):
@@ -69,7 +70,7 @@ class GeminiModel:
 		} # Generation configuration
 
 		model = genai.GenerativeModel( # Create the model
-			model_name="gemini-1.5-flash", # Model name
+			model_name=self.model_name, # Model name
 			generation_config=generation_config, # Generation
 		)
 
@@ -119,7 +120,6 @@ class GeminiModel:
 		:return output: The output text.
 		"""
 
-		self.api_key = self.verify_env_file(self.ENV_PATH, self.ENV_VARIABLE) # Verify the .env file and load API key
 		self.model = self.configure_model(self.api_key) # Configure the model
 		chat_session = self.start_chat_session(self.model, f"Hi, Gemini.") # Start the chat session
 		output = self.send_message(chat_session, task_message) # Send the message
