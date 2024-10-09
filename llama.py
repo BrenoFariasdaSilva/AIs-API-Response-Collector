@@ -57,8 +57,17 @@ class LlamaModel:
 		:param task_message: The message to send to the AI model.
 		:return output: The output text.
 		"""
-	
-		pass # Do nothing
+
+		verbose_output(true_string=f"{BackgroundColors.GREEN}Running the Llama AI Model...{Style.RESET_ALL}") # Output the running message
+
+		response = self.client.chat.completions.create(
+			model="llama3.1-70b", # The model to use
+			messages=[ # The messages to send
+				{"role": "user", "content": task_message} # User message
+			],
+    	)
+
+		return response.choices[0].message.content # Return the response
 
 def main():
 	"""
