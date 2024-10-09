@@ -231,23 +231,22 @@ def convert_dict_to_df(output_dict):
 
    return pd.DataFrame(output_dict) # Return the DataFrame
 
-def write_output_to_csv(tasks_df, output_dict):
+def write_output_to_csv(output_dict):
    """
-   Write the output to a new CSV file with the first column as the input tasks
-   and the other columns as the AI model outputs.
+   Write the output to a new CSV file with the first column as the input tasks and the other columns as the AI model outputs.
 
-   :param tasks_df: The DataFrame containing the input tasks.
    :param output_dict: The output dictionary containing model outputs.
    :return: None
    """
 
    verbose_output(true_string=f"{BackgroundColors.GREEN}Writing the output to the output CSV file...{Style.RESET_ALL}") # Output the writing message
 
-   output_df = convert_dict_to_df(output_dict) # Convert the output dictionary to a DataFrame
-   combined_df = pd.concat([tasks_df, output_df], axis=1) # Concatenate the DataFrames along the columns
-   combined_df.to_csv(OUTPUT_CSV_FILE, index=False) # Write the combined DataFrame to the output CSV file
-
-   verbose_output(true_string=f"{BackgroundColors.GREEN}Output written to {BackgroundColors.CYAN}{OUTPUT_CSV_FILE}{Style.RESET_ALL}") # Output the success message
+   try: # Try to write the output to the CSV file
+      output_df = convert_dict_to_df(output_dict) # Convert the output dictionary to a DataFrame
+      output_df.to_csv(OUTPUT_CSV_FILE, index=False) # Write the output DataFrame to the output CSV file
+      verbose_output(true_string=f"{BackgroundColors.GREEN}Output written to {BackgroundColors.CYAN}{OUTPUT_CSV_FILE}{Style.RESET_ALL}") # Output the success message
+   except Exception as e: # If an error occurs
+      verbose_output(true_string=f"{BackgroundColors.RED}Error writing output to CSV: {str(e)}{Style.RESET_ALL}") # Output the error message
 
 def main():
    """
@@ -262,7 +261,7 @@ def main():
 
    tasks_df = read_csv_file() # Read the tasks from the input CSV file
    output_dict = run_tasks(tasks_df) # Run the tasks
-   write_output_to_csv(tasks_df, output_dict) # Write the output to the output CSV file
+   write_output_to_csv(output_dict) # Write the output to the output CSV file
 
    print(f"{BackgroundColors.BOLD}{BackgroundColors.GREEN}Program finished.{Style.RESET_ALL}") # Output the end of the program message
    atexit.register(play_sound) # Register the function to play a sound when the program finishes
