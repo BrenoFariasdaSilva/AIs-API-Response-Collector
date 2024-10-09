@@ -49,7 +49,10 @@ The project aims to facilitate in-depth analysis and comparison of AI models, ma
       - [1. Fill in the API Keys](#1-fill-in-the-api-keys)
       - [2. Rename the File](#2-rename-the-file)
   - [Installation:](#installation)
-  - [Run Python Code:](#run-python-code)
+    - [Python and Pip](#python-and-pip)
+      - [Linux](#linux)
+      - [MacOS](#macos)
+      - [Windows](#windows)
     - [Dependencies](#dependencies)
     - [Dataset - Optional](#dataset---optional)
   - [Usage](#usage)
@@ -137,22 +140,41 @@ mv .env_example .env
 Now the tool will automatically load the API keys from your `.env` file when making requests to the respective AI models. Make sure the `.env` file is not shared publicly to keep your API keys secure.
 
 ## Installation:
-* Python Language:
-  - Install the Python language by following the instructions on the [official website](https://www.python.org/downloads/).
-  - Alternatively, you can install Python using the package manager of your choice. For example, on Ubuntu, you can use the following command:  
 
-    ```bash
-    sudo apt install python3 -y
-    ``` 
+In order to run the project, you must have Python and Pip installed in your machine. In this section, you will learn how to install Python and Pip in your machine.
 
-## Run Python Code:
-In order to run the Python code, follow the steps below:
+### Python and Pip
 
-```bash
-make
+In order to run the scripts, you must have python3 and pip installed in your machine. If you don't have it installed, you can use the following commands to install it:
+
+#### Linux
+
+In order to install python3 and pip in Linux, you can use the following commands:
+
+```
+sudo apt install python3 -y
+sudo apt install python3-pip -y
 ```
 
-This command will setup the virtual environment, install the dependencies in the `requirements.txt` file to the virtual environment, and run the Python code.
+#### MacOS
+
+In order to install python3 and pip in MacOS, you can use the following commands:
+
+```
+brew install python3
+```
+
+#### Windows
+
+In order to install python3 and pip in Windows, you can use the following commands in case you have `choco` installed:
+
+```
+choco install python3
+```
+
+Or just download the installer from the [official website](https://www.python.org/downloads/).
+
+Great, you now have python3 and pip installed. Now, we need to install the project requirements/dependencies.
 
 ### Dependencies
 
