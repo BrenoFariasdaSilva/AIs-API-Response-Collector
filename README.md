@@ -8,8 +8,8 @@
   
 ---
 
-Project-Description.
-  
+This tool, developed in Python, interacts seamlessly with various AI APIs, including OpenAI's GPT-3.5, Google's PaLM, and Cohere's language models. Users can submit requests and retrieve responses for the same input, with collected responses organized and stored in a CSV file for easy comparison and analysis. The tool computes similarities based on the expected outputs of the AIs, enabling users to evaluate the performance of different models efficiently. With a focus on usability, this automated solution streamlines the process of performance assessment across multiple AI platforms.
+
 ---
 
 </div>
