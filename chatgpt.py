@@ -5,6 +5,7 @@ import os # For running a command in the terminal
 import sys # For exiting the program
 from colorama import Style # For coloring the terminal
 from dotenv import load_dotenv # For loading .env files
+from openai import OpenAI # Import OpenAI client
 from utils import BackgroundColors # Import Classes from ./utils.py
 from utils import OUTPUT_DIRECTORY # Import Constants from ./utils.py
 from utils import create_directory, play_sound, verbose_output, verify_filepath_exists, write_output_to_file # Import Functions from ./utils.py
@@ -51,13 +52,25 @@ class ChatGPTModel:
 
 	def run(self, task_message):
 		"""
-		Main function to run the Copilot CLI to explain or suggest a command.
+		Main function to run the AI model to do what is described in the task message.
 
-		:param task_message: The command to be explained or description of what you want.
-		:return output: The output from Copilot.
+		:param task_message: The message to send to the AI model.
+		:return output: The output text.
 		"""
-	
-		pass # Do nothing
+
+		verbose_output(true_string=f"{BackgroundColors.GREEN}Running the ChatGPT AI Model...{Style.RESET_ALL}") # Output the running message
+
+		response = self.client.chat.completions.create( # Create a completion
+			model="gpt-4o-mini", # The model to use
+			messages=[ # The messages to send
+				{
+					"role": "user", # The role of the user
+					"content": task_message, # The content of the message
+				}
+			],
+		)
+
+		return response.choices[0].message # Return the response
 
 def main():
 	"""
