@@ -192,6 +192,31 @@ def compute_similarity(output, expected_output):
 
    return round(similarity * 100, 2) # Return similarity as a percentage rounded to 2 decimal places
 
+def compute_similarity_for_models(models_object_list, task_results, expected_output, output_dict):
+   """
+   Compute similarity scores for each model and update the output dictionary.
+
+   :param models_object_list: List of model objects.
+   :param task_results: The results from running the task on the models.
+   :param expected_output: The expected output for the task.
+   :param output_dict: The output dictionary to store results.
+   :return: List of similarity scores for each model.
+   """
+
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Computing similarity scores for each model...{Style.RESET_ALL}") # Output the computation message
+
+   similarity_scores = [] # To store similarity scores for each model
+
+   for model in models_object_list: # Loop through each model object
+      model_name = model.__module__.split(".")[-1].capitalize() # Get model's name
+      similarity_score = compute_similarity(task_results[model_name], expected_output) # Compute similarity
+      similarity_scores.append((model_name, similarity_score)) # Append model name and score
+
+      output_dict[model_name].append(task_results[model_name]) # Append the model's output to the corresponding list
+      output_dict[f"{model_name} Similarity"].append(similarity_score if similarity_score is not None else "N/A") # Append the similarity score for each model
+
+   return similarity_scores # Return the list of similarity scores
+
 def run_tasks(df):
    """
    Run the tasks in the DataFrame.
@@ -211,6 +236,8 @@ def run_tasks(df):
       print(f"{BackgroundColors.CYAN}Task {index + 1:02}{BackgroundColors.GREEN}:\n - {BackgroundColors.GREEN}Task Message: {BackgroundColors.CYAN}{task_description}{BackgroundColors.GREEN}\n - Expected Output: {BackgroundColors.CYAN}{expected_output}{Style.RESET_ALL}\n") # Output the task description and expected output
 
       task_results = run_task_on_each_model(models_object_list, task_description, output_dict) # Run the task on each AI model
+
+      similarity_scores = compute_similarity_for_models(models_object_list, task_results, expected_output, output_dict) # Compute similarity scores
 
    return output_dict # Return the output list
 
