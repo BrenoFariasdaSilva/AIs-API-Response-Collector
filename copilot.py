@@ -1,3 +1,5 @@
+# API Guide: https://docs.github.com/en/copilot/using-github-copilot/using-github-copilot-in-the-command-line
+
 import atexit # For playing a sound when the program finishes
 import os # For running a command in the terminal
 import subprocess # For capturing the output of the terminal commands
