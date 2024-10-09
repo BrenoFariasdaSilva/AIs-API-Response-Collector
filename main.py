@@ -297,7 +297,7 @@ def write_output_to_csv(output_dict):
       output_df.to_csv(OUTPUT_CSV_FILE, index=False) # Write the output DataFrame to the output CSV file
       verbose_output(true_string=f"{BackgroundColors.GREEN}Output written to {BackgroundColors.CYAN}{OUTPUT_CSV_FILE}{Style.RESET_ALL}") # Output the success message
    except Exception as e: # If an error occurs
-      verbose_output(true_string=f"{BackgroundColors.RED}Error writing output to CSV: {str(e)}{Style.RESET_ALL}") # Output the error message
+      print(f"{BackgroundColors.RED}Error writing output to CSV: {str(e)}{Style.RESET_ALL}") # Output the error message
 
 def main():
    """
