@@ -22,9 +22,9 @@ class ChatGPTModel:
 	OUTPUT_FILE = f"{OUTPUT_DIRECTORY}ChatGPT_output.txt" # The path to the output file
 
 	def __init__(self): # Constructor
-		self.api_key = None # The API key
-		self.model = None # The AI model
-		self.client = None # OpenAI client
+		self.api_key = self.verify_env_file()  # Call verify_env_file to load the API key
+		self.model = "gpt-4o-mini" # The AI model
+		self.client = OpenAI(api_key=self.api_key)  # Initialize the OpenAI client with the API key
 
 	def verify_env_file(self, env_path=ENV_PATH, key=ENV_VARIABLE):
 		"""
@@ -61,7 +61,7 @@ class ChatGPTModel:
 		verbose_output(true_string=f"{BackgroundColors.GREEN}Running the ChatGPT AI Model...{Style.RESET_ALL}") # Output the running message
 
 		response = self.client.chat.completions.create( # Create a completion
-			model="gpt-4o-mini", # The model to use
+			model=self.model, # The model to use
 			messages=[ # The messages to send
 				{
 					"role": "user", # The role of the user
