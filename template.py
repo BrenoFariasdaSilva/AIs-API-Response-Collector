@@ -14,8 +14,6 @@ class ModelName:
 	"""
 
 	# Constants:
-
-	# Constants:
 	ENV_PATH = "./.env" # The path to the .env file
 	ENV_VARIABLE = "MODELNAME_API_KEY" # The environment variable to load
 	OUTPUT_FILE = f"{OUTPUT_DIRECTORY}ModelName_output.txt" # The path to the output file
