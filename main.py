@@ -199,9 +199,9 @@ def run_tasks(df):
 
    for index, task in df.iterrows(): # Loop through each row in the DataFrame
       task_description = get_task_description(task) # Get the task description
-      print(f"{BackgroundColors.GREEN}Task {index + 1}: {BackgroundColors.CYAN}{task_description}{Style.RESET_ALL}") # Output the task number and description
       expected_output = get_expected_output(task) # Get the expected output, if available
       output_dict["Expected Output"].append(expected_output) # Add the expected output to the dictionary
+      print(f"{BackgroundColors.CYAN}Task {index + 1:02}{BackgroundColors.GREEN}:\n - {BackgroundColors.GREEN}Task Message: {BackgroundColors.CYAN}{task_description}{BackgroundColors.GREEN}\n - Expected Output: {BackgroundColors.CYAN}{expected_output}{Style.RESET_ALL}\n") # Output the task description and expected output
 
       task_results = run_task_on_each_model(models_object_list, task_description, output_dict) # Run the task on each AI model
 
@@ -256,7 +256,7 @@ def main():
    output_dict = run_tasks(tasks_df) # Run the tasks
    write_output_to_csv(tasks_df, output_dict) # Write the output to the output CSV file
 
-   print(f"\n{BackgroundColors.BOLD}{BackgroundColors.GREEN}Program finished.{Style.RESET_ALL}") # Output the end of the program message
+   print(f"{BackgroundColors.BOLD}{BackgroundColors.GREEN}Program finished.{Style.RESET_ALL}") # Output the end of the program message
    atexit.register(play_sound) # Register the function to play a sound when the program finishes
 
 if __name__ == "__main__":
