@@ -94,9 +94,6 @@ def initialize_dict(models_list):
       output_dict[model_name] = [] # Initialize an empty list for the model output
       output_dict[f"{model_name} Similarity"] = [] # Initialize an empty list for similarity scores
 
-   # print the columns names
-   print(f"{BackgroundColors.CYAN}Columns in the output CSV file:{Style.RESET_ALL}\n{list(output_dict.keys())}\n")
-
    return output_dict # Return the initialized dictionary
 
 def get_task_description(task):
