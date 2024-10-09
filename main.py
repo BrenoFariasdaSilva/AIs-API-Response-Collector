@@ -157,18 +157,6 @@ def run_task_on_each_model(models_object_list, task_description, output_dict):
 
    return task_results # Return the task results dictionary
 
-def combine_model_outputs(task_results):
-   """
-   Combine the results from all models into a single string.
-
-   :param task_results: The dictionary of task results from all models.
-   :return: A combined string of all results.
-   """
-
-   verbose_output(true_string=f"{BackgroundColors.GREEN}Combining the results from all models...{Style.RESET_ALL}") # Output the combining message
-
-   return " ".join(task_results.values()) # Combine the results from all models
-
 def compute_similarity(output, expected_output):
    """
    Compute the similarity between the output and the expected output using Cosine Similarity.
@@ -209,10 +197,6 @@ def run_tasks(df):
       print(f"{BackgroundColors.CYAN}Task {index + 1:02}{BackgroundColors.GREEN}:\n - {BackgroundColors.GREEN}Task Message: {BackgroundColors.CYAN}{task_description}{BackgroundColors.GREEN}\n - Expected Output: {BackgroundColors.CYAN}{expected_output}{Style.RESET_ALL}\n") # Output the task description and expected output
 
       task_results = run_task_on_each_model(models_object_list, task_description, output_dict) # Run the task on each AI model
-
-      combined_result = combine_model_outputs(task_results) # Combine the results from all models
-      similarity_score = compute_similarity(combined_result, expected_output) # Compute the similarity score
-      output_dict["Similarity"].append(similarity_score if similarity_score is not None else "N/A") # Add the similarity score to the output dictionary
 
    return output_dict # Return the output list
 
