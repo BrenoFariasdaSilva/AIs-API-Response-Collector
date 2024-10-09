@@ -3,9 +3,9 @@ import os # For running a command in the terminal
 import pandas as pd # For reading CSV files
 import sys # For exiting the program
 from colorama import Style # For coloring the terminal
-from chatgpt import ChatGPTModel # Import the ChatGPTModel class from chatgpt.py
-from copilot import CopilotModel # Import the CopilotModel class from copilot.py
-from gemini import GeminiModel # Import the GeminiModel class from gemini.py
+from chatgpt import ChatGPTModel # Import the ChatGPTModel class from ./chatgpt.py
+from copilot import CopilotModel # Import the CopilotModel class from ./copilot.py
+from gemini import GeminiModel # Import the GeminiModel class from ./gemini.py
 from utils import BackgroundColors # Import Classes from ./utils.py
 from utils import START_PATH, OUTPUT_DIRECTORY # Import Constants from ./utils.py
 from utils import create_directory, play_sound, verbose_output # Import Functions from ./utils.py
