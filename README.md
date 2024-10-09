@@ -49,7 +49,7 @@ The project aims to facilitate in-depth analysis and comparison of AI models, ma
       - [1. Fill in the API Keys](#1-fill-in-the-api-keys)
       - [2. Rename the File](#2-rename-the-file)
   - [Installation:](#installation)
-  - [Run Programing Language Code:](#run-programing-language-code)
+  - [Run Python Code:](#run-python-code)
     - [Dependencies](#dependencies)
     - [Dataset - Optional](#dataset---optional)
   - [Usage](#usage)
@@ -80,7 +80,6 @@ To access the ChatGPT API, follow these steps:
 - Visit the [OpenAI Platform](https://platform.openai.com/docs/quickstart) and sign up or log in to your account.
 - The ChatGPT API allows you to integrate AI capabilities into your applications, enabling natural language processing, semantic search, and more.
 - Generate an API key in the OpenAI dashboard by going to [API Keys](https://platform.openai.com/api-keys).
-- Note: The ChatGPT API is a paid service. You will need to subscribe to a pricing plan after generating your API key.
 
 For more details, you can explore the [OpenAI Developer Quickstart](https://platform.openai.com/docs/quickstart).
 
@@ -90,7 +89,6 @@ To obtain an API key for the Gemini API, follow these steps:
 - Visit the [Google AI Studio](https://ai.google.dev/gemini-api/docs/api-key) to get a Gemini API key.
 - Sign in with your Google account or create one if you don't have one already.
 - Navigate to the [Google AI Studio API Key page](https://aistudio.google.com/app/apikey), and with a few clicks, generate your key.
-- Gemini is free to use with your Google account. You can start using it right away without any additional cost, making it a good option for developers starting out with AI.
 
 #### 3. **Llama (Meta)**
 To access the Llama API, follow these steps:
@@ -99,7 +97,6 @@ To access the Llama API, follow these steps:
 - Once registered, note that Llama is currently in a private beta. You will be added to the waitlist after signing up.
 - After receiving an invitation, log in and navigate to the **API Token** section to generate your token. 
 
-Llama API might have pricing details once you get access, so keep an eye on their [pricing page](https://www.llama-api.com/pricing).
 More details on obtaining your token can be found in the [Llama API Documentation](https://docs.llama-api.com/api-token).
 
 #### 4. **Mistral**
@@ -107,7 +104,6 @@ To use the Mistral API, follow these steps:
 
 - Visit the [Mistral AI Documentation](https://docs.mistral.ai/docs/getting-started) to learn more about Mistral and its API.
 - Sign in or create an account in the [Mistral Console](https://console.mistral.ai/api-keys/) and generate your API key.
-- Note: Like ChatGPT, the Mistral API is a paid service. You will need to subscribe to a plan to use the API.
 
 For more information, refer to the [Mistral Getting Started Guide](https://docs.mistral.ai/docs/getting-started).
 
@@ -141,29 +137,22 @@ mv .env_example .env
 Now the tool will automatically load the API keys from your `.env` file when making requests to the respective AI models. Make sure the `.env` file is not shared publicly to keep your API keys secure.
 
 ## Installation:
-* Programing Language:
+* Python Language:
+  - Install the Python language by following the instructions on the [official website](https://www.python.org/downloads/).
+  - Alternatively, you can install Python using the package manager of your choice. For example, on Ubuntu, you can use the following command:  
 
-	* Manually:
-		```bash
-		# Programing Language:
-		sudo apt install program-language -y
-		```
-
-  * Using Makefile:
     ```bash
-    make install
-    ```
+    sudo apt install python3 -y
+    ``` 
 
-  * Using ShellScript:
-    ```bash
-    chmod +x install.sh
-    sudo ./install.sh
-    ```  
+## Run Python Code:
+In order to run the Python code, follow the steps below:
 
-## Run Programing Language Code:
 ```bash
-# Command here 
+make
 ```
+
+This command will setup the virtual environment, install the dependencies in the `requirements.txt` file to the virtual environment, and run the Python code.
 
 ### Dependencies
 
