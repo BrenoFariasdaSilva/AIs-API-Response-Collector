@@ -13,7 +13,6 @@ class CopilotModel:
 	"""
 
 	# Constants:
-
 	OUTPUT_FILE = f"{OUTPUT_DIRECTORY}Copilot_output.txt" # The path to the output file
 
 	def __init__(self): # Constructor
