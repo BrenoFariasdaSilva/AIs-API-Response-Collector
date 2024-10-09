@@ -138,7 +138,8 @@ def run_tasks(df):
       for model in models_object_list: # Loop through each model object
          model_name = model.__module__.split(".")[-1].capitalize() # Get the model's name
          result = model.run(task_description) # Run the task using the model's "run" method
-         output_dict[model_name].append(format_output(result)) # Add the result to the output dictionary
+         formatted_result = format_output(result) # Format the result
+         output_dict[model_name].append(formatted_result) # Add the result to the output dictionary
    
    return output_dict # Return the output list
 
