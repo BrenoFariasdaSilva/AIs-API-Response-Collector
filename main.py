@@ -1,4 +1,5 @@
 import atexit # For playing a sound when the program finishes
+import csv # For reading and writing CSV files
 import os # For running a command in the terminal
 import pandas as pd # For reading CSV files
 import sys # For exiting the program
@@ -289,14 +290,19 @@ def write_output_to_csv(output_dict):
    :param output_dict: The output dictionary containing model outputs.
    :return: None
    """
-
+   
    verbose_output(true_string=f"{BackgroundColors.GREEN}Writing the output to the output CSV file...{Style.RESET_ALL}") # Output the writing message
 
    try: # Try to write the output to the CSV file
-      output_df = convert_dict_to_df(output_dict) # Convert the output dictionary to a DataFrame
-      output_df.to_csv(OUTPUT_CSV_FILE, index=False) # Write the output DataFrame to the output CSV file
+      with open(OUTPUT_CSV_FILE, mode="w", newline="", encoding="utf-8") as file: # Open the output CSV file
+         writer = csv.writer(file) # Create a CSV writer
+         writer.writerow(output_dict.keys()) # Write the header row
+         num_rows = len(output_dict["Task"]) # Get the number of rows based on the length of the "Task" list
+         for i in range(num_rows): # Loop through each row
+            row = [output_dict[key][i] for key in output_dict] # Get the values for each key in the dictionary
+            writer.writerow(row) # Write the row to the CSV file
       verbose_output(true_string=f"{BackgroundColors.GREEN}Output written to {BackgroundColors.CYAN}{OUTPUT_CSV_FILE}{Style.RESET_ALL}") # Output the success message
-   except Exception as e: # If an error occurs
+   except Exception as e:
       print(f"{BackgroundColors.RED}Error writing output to CSV: {str(e)}{Style.RESET_ALL}") # Output the error message
 
 def main():
