@@ -302,12 +302,14 @@ def write_output_to_csv(output_dict):
       with open(OUTPUT_CSV_FILE, mode="w", newline="", encoding="utf-8") as file: # Open the output CSV file
          writer = csv.writer(file) # Create a CSV writer
          writer.writerow(output_dict.keys()) # Write the header row
+
          num_rows = len(output_dict["Task"]) # Get the number of rows based on the length of the "Task" list
          for i in range(num_rows): # Loop through each row
             row = [output_dict[key][i] for key in output_dict] # Get the values for each key in the dictionary
             writer.writerow(row) # Write the row to the CSV file
+      
       verbose_output(true_string=f"{BackgroundColors.GREEN}Output written to {BackgroundColors.CYAN}{OUTPUT_CSV_FILE}{Style.RESET_ALL}") # Output the success message
-   except Exception as e:
+   except Exception as e: # If an error occurs
       print(f"{BackgroundColors.RED}Error writing output to CSV: {str(e)}{Style.RESET_ALL}") # Output the error message
 
 def main():
