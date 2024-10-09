@@ -13,7 +13,7 @@ from utils import START_PATH, OUTPUT_DIRECTORY # Import Constants from ./utils.p
 from utils import create_directory, play_sound, verbose_output # Import Functions from ./utils.py
 
 # Execution Constants:
-EXECUTE_MODELS = {"chatgpt": "ChatGPTModel", "Copilot": "CopilotModel", "Gemini": "GeminiModel", "Llama": "LlamaModel", "Mistral": "MistralModel"} # The AI/LLM models to execute
+EXECUTE_MODELS = {"ChatGPT": "ChatGPTModel", "Copilot": "CopilotModel", "Gemini": "GeminiModel", "Llama": "LlamaModel", "Mistral": "MistralModel"} # The AI/LLM models to execute
 
 # Input/Output Directory Constants:
 INPUT_DIRECTORY = f"{START_PATH}/Inputs/" # The path to the input directory
