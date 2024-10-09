@@ -239,6 +239,23 @@ def compute_similarity_statistics(similarity_scores):
 
    return statistics_tuple # Return the statistics
 
+def update_similarity_statistics(output_dict, statistics_tuple):
+   """
+   Update the output dictionary with similarity statistics.
+
+   :param output_dict: The output dictionary to update.
+   :param statistics_tuple: Tuple of min_similarity, max_similarity, average_similarity, median_similarity, and standard_deviation_similarity.
+   :return: None
+   """
+
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Updating the output dictionary with similarity statistics...{Style.RESET_ALL}") # Output the updating message
+
+   output_dict["Minimum Similarity"].append(statistics_tuple[0]) # Update the minimum similarity
+   output_dict["Maximum Similarity"].append(statistics_tuple[1]) # Update the maximum similarity
+   output_dict["Average Similarity"].append(statistics_tuple[2]) # Update the average similarity
+   output_dict["Median Similarity"].append(statistics_tuple[3]) # Update the median similarity
+   output_dict["Standard Deviation Similarity"].append(statistics_tuple[4]) # Update the standard deviation similarity
+
 def compute_similarity_for_models(models_object_list, task_results, expected_output, output_dict):
    """
    Compute similarity scores for each model and update the output dictionary.
@@ -261,6 +278,7 @@ def compute_similarity_for_models(models_object_list, task_results, expected_out
       output_dict[f"{model_name} Similarity"].append(similarity_score if similarity_score is not None else "N/A") # Append the similarity score for each model
    
    statistics_tuple = compute_similarity_statistics(similarity_scores) # Compute similarity statistics
+   update_similarity_statistics(output_dict, statistics_tuple) # Update similarity statistics
 
    return similarity_scores # Return the list of similarity scores
 
