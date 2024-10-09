@@ -22,9 +22,9 @@ class ChatGPTModel:
 	OUTPUT_FILE = f"{OUTPUT_DIRECTORY}ChatGPT_output.txt" # The path to the output file
 
 	def __init__(self): # Constructor
-		self.api_key = self.verify_env_file()  # Call verify_env_file to load the API key
+		self.api_key = self.verify_env_file() # Call verify_env_file to load the API key
 		self.model = "gpt-4o-mini" # The AI model
-		self.client = OpenAI(api_key=self.api_key)  # Initialize the OpenAI client with the API key
+		self.client = OpenAI(api_key=self.api_key) # Initialize the OpenAI client with the API key
 
 	def verify_env_file(self, env_path=ENV_PATH, key=ENV_VARIABLE):
 		"""
