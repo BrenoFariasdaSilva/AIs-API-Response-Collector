@@ -138,6 +138,18 @@ def run_task_on_each_model(models_object_list, task_description, output_dict):
 
    return task_results # Return the task results dictionary
 
+def combine_model_outputs(task_results):
+   """
+   Combine the results from all models into a single string.
+
+   :param task_results: The dictionary of task results from all models.
+   :return: A combined string of all results.
+   """
+
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Combining the results from all models...{Style.RESET_ALL}") # Output the combining message
+
+   return " ".join(task_results.values()) # Combine the results from all models
+
 def run_tasks(df):
    """
    Run the tasks in the DataFrame.
@@ -158,7 +170,7 @@ def run_tasks(df):
       output_dict["Expected Output"].append(expected_output) # Add the expected output to the dictionary
 
       output_dict = run_task_on_each_model(models_object_list, task_description, output_dict) # Run the task on each AI model
-   
+
    return output_dict # Return the output list
 
 def convert_dict_to_df(output_dict):
