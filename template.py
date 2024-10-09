@@ -48,10 +48,10 @@ class ModelName:
 
 	def run(self, task_message):
 		"""
-		Main function to run the Copilot CLI to explain or suggest a command.
+		Main function to run the AI model to do what is described in the task message.
 
-		:param task_message: The command to be explained or description of what you want.
-		:return output: The output from Copilot.
+		:param task_message: The message to send to the AI model.
+		:return output: The output text.
 		"""
 	
 		pass # Do nothing
