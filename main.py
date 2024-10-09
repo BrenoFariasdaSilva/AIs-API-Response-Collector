@@ -89,6 +89,18 @@ def initialize_dict(models_list):
    
    return output_dict # Return the initialized dictionary
 
+def get_expected_output(task):
+   """
+   Get the expected output from the task, if available.
+
+   :param task: The task from the DataFrame.
+   :return: The expected output or an empty string if not present.
+   """
+
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Getting the expected output from the task...{Style.RESET_ALL}") # Output the getting message
+
+   return task.get("Expected Output (Optional)", "") # Get the expected output from the task
+
 def format_output(output):
    """
    Format the output by:
@@ -120,6 +132,9 @@ def run_tasks(df):
    for index, task in df.iterrows(): # Loop through each row in the DataFrame
       task_description = task.iloc[0] # Get the task description
       print(f"{BackgroundColors.GREEN}Task {index + 1}: {BackgroundColors.CYAN}{task_description}{Style.RESET_ALL}") # Output the task
+      expected_output = get_expected_output(task) # Get the expected output, if available
+      output_dict["Expected Output"].append(expected_output) # Add the expected output to the dictionary
+
       for model in models_object_list: # Loop through each model object
          model_name = model.__module__.split(".")[-1].capitalize() # Get the model's name
          result = model.run(task_description) # Run the task using the model's "run" method
