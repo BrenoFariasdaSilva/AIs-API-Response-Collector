@@ -1,6 +1,7 @@
 import atexit # For playing a sound when the program finishes
 import csv # For reading and writing CSV files
 import os # For running a command in the terminal
+import numpy as np # For numerical operations
 import pandas as pd # For reading CSV files
 import sys # For exiting the program
 from chatgpt import ChatGPTModel # Import the ChatGPTModel class from ./chatgpt.py
@@ -213,6 +214,31 @@ def compute_similarity(output, expected_output):
 
    return round(similarity * 100, 2) # Return similarity as a percentage rounded to 2 decimal places
 
+def compute_similarity_statistics(similarity_scores):
+   """
+   Compute min, max, average, median, and standard deviation of similarity scores.
+
+   :param similarity_scores: List of tuples with model names and their similarity scores.
+   :return: Tuple of min_similarity, max_similarity, average_similarity, median_similarity, and standard_deviation_similarity.
+   """
+
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Computing similarity statistics...{Style.RESET_ALL}") # Output the computation message
+
+   valid_scores = [score for model_name, score in similarity_scores if isinstance(score, (int, float))] # Extract valid numeric scores, ensuring they are floats
+
+   if not valid_scores: # Handle case with no valid scores
+      return (0, 0, 0, 0, 0) # Or another appropriate value for empty case
+
+   min_similarity = round(min(valid_scores), 2) # Compute the minimum similarity
+   max_similarity = round(max(valid_scores), 2) # Compute the maximum similarity
+   average_similarity = round(np.mean(valid_scores), 2) # Compute the average similarity
+   median_similarity = round(np.median(valid_scores), 2) # Compute the median similarity
+   standard_deviation_similarity = round(np.std(valid_scores), 2) # Compute the standard deviation
+
+   statistics_tuple = (min_similarity, max_similarity, average_similarity, median_similarity, standard_deviation_similarity) # Store the statistics in a tuple
+
+   return statistics_tuple # Return the statistics
+
 def compute_similarity_for_models(models_object_list, task_results, expected_output, output_dict):
    """
    Compute similarity scores for each model and update the output dictionary.
@@ -233,6 +259,8 @@ def compute_similarity_for_models(models_object_list, task_results, expected_out
       similarity_score = compute_similarity(task_results[model_name], expected_output) # Compute similarity score
       similarity_scores.append((model_name, similarity_score if similarity_score is not None else 0)) # Append the model name and similarity score to the list
       output_dict[f"{model_name} Similarity"].append(similarity_score if similarity_score is not None else "N/A") # Append the similarity score for each model
+   
+   statistics_tuple = compute_similarity_statistics(similarity_scores) # Compute similarity statistics
 
    return similarity_scores # Return the list of similarity scores
 
