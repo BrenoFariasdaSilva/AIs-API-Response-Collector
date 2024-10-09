@@ -38,10 +38,13 @@ The project aims to facilitate in-depth analysis and comparison of AI models, ma
 ## Table of Contents
 - [AIs-API-Response-Collector. ](#ais-api-response-collector-)
   - [Table of Contents](#table-of-contents)
-  - [Requirements](#requirements)
   - [Setup](#setup)
     - [Clone the repository](#clone-the-repository)
     - [Generate API Key](#generate-api-key)
+      - [1. **ChatGPT (OpenAI)**](#1-chatgpt-openai)
+      - [2. **Gemini (Google)**](#2-gemini-google)
+      - [3. **Llama (Meta)**](#3-llama-meta)
+      - [4. **Mistral**](#4-mistral)
   - [Installation:](#installation)
   - [Run Programing Language Code:](#run-programing-language-code)
     - [Dependencies](#dependencies)
@@ -52,10 +55,6 @@ The project aims to facilitate in-depth analysis and comparison of AI models, ma
   - [Collaborators](#collaborators)
   - [License](#license)
     - [Apache License 2.0](#apache-license-20)
-
-## Requirements
-
-Bullet points of the requirements.
 
 ## Setup
 
@@ -70,7 +69,40 @@ cd AIs-API-Response-Collector
 
 ### Generate API Key
 
-TODO: Add instructions on how to generate an API key for each of the available APIs, including the website and the steps to follow.
+To interact with the various AI models supported by this tool, you will need to generate API keys for each respective service. Below are the steps to obtain API keys for ChatGPT, Gemini, Llama, and Mistral.
+
+#### 1. **ChatGPT (OpenAI)**
+To access the ChatGPT API, follow these steps:
+
+- Visit the [OpenAI Platform](https://platform.openai.com/docs/quickstart) and sign up or log in to your account.
+- The ChatGPT API allows you to integrate AI capabilities into your applications, enabling natural language processing, semantic search, and more.
+- Generate an API key in the OpenAI dashboard by going to [API Keys](https://platform.openai.com/api-keys).
+
+For more details, you can explore the [OpenAI Developer Quickstart](https://platform.openai.com/docs/quickstart).
+
+#### 2. **Gemini (Google)**
+To obtain an API key for the Gemini API, follow these steps:
+
+- Visit the [Google AI Studio](https://ai.google.dev/gemini-api/docs/api-key) to get a Gemini API key.
+- Sign in with your Google account or create one if you don't have one already.
+- Navigate to the [Google AI Studio API Key page](https://aistudio.google.com/app/apikey), and with a few clicks, generate your key.
+
+#### 3. **Llama (Meta)**
+To access the Llama API, follow these steps:
+
+- Visit the [Llama API website](https://www.llama-api.com) and create an account by signing up.
+- Once registered, note that Llama is currently in a private beta. You will be added to the waitlist after signing up.
+- After receiving an invitation, log in and navigate to the **API Token** section to generate your token. 
+
+More details on obtaining your token can be found in the [Llama API Documentation](https://docs.llama-api.com/api-token).
+
+#### 4. **Mistral**
+To use the Mistral API, follow these steps:
+
+- Visit the [Mistral AI Documentation](https://docs.mistral.ai/docs/getting-started) to learn more about Mistral and its API.
+- Sign in or create an account in the [Mistral Console](https://console.mistral.ai/api-keys/) and generate your API key.
+
+For more information, refer to the [Mistral Getting Started Guide](https://docs.mistral.ai/docs/getting-started).
 
 ## Installation:
 * Programing Language:
