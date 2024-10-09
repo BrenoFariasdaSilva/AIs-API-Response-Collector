@@ -2,8 +2,8 @@ import atexit # For playing a sound when the program finishes
 import os # For running a command in the terminal
 import pandas as pd # For reading CSV files
 import sys # For exiting the program
-from colorama import Style # For coloring the terminal
 from chatgpt import ChatGPTModel # Import the ChatGPTModel class from ./chatgpt.py
+from colorama import Style # For coloring the terminal
 from copilot import CopilotModel # Import the CopilotModel class from ./copilot.py
 from gemini import GeminiModel # Import the GeminiModel class from ./gemini.py
 from llama import LlamaModel # Import the LlamaModel class from ./llama.py
