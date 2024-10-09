@@ -10,6 +10,8 @@
 
 This tool, developed in Python, interacts seamlessly with various AI APIs, including OpenAI's GPT-3.5, Google's PaLM, and Cohere's language models. Users can submit requests and retrieve responses for the same input, with collected responses organized and stored in a CSV file for easy comparison and analysis. The tool computes similarities based on the expected outputs of the AIs, enabling users to evaluate the performance of different models efficiently. With a focus on usability, this automated solution streamlines the process of performance assessment across multiple AI platforms.
 
+The project aims to facilitate in-depth analysis and comparison of AI models, making it an essential resource for researchers, developers, and enthusiasts in the field of Artificial Intelligence.
+
 ---
 
 </div>
@@ -36,7 +38,6 @@ This tool, developed in Python, interacts seamlessly with various AI APIs, inclu
 ## Table of Contents
 - [AIs-API-Response-Collector. ](#ais-api-response-collector-)
   - [Table of Contents](#table-of-contents)
-  - [Introduction](#introduction)
   - [Requirements](#requirements)
   - [Setup](#setup)
     - [Clone the repository](#clone-the-repository)
@@ -51,10 +52,6 @@ This tool, developed in Python, interacts seamlessly with various AI APIs, inclu
   - [Collaborators](#collaborators)
   - [License](#license)
     - [Apache License 2.0](#apache-license-20)
-
-## Introduction
-
-Detailed project description.
 
 ## Requirements
 
