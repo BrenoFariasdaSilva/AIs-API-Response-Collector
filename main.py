@@ -217,6 +217,19 @@ def compute_similarity_for_models(models_object_list, task_results, expected_out
 
    return similarity_scores # Return the list of similarity scores
 
+def update_most_similar_model(similarity_scores, output_dict):
+   """
+   Update the output dictionary with the most similar model based on similarity scores.
+
+   :param similarity_scores: List of tuples with model names and their similarity scores.
+   :param output_dict: The output dictionary to store the most similar model.
+   """
+
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Updating the most similar model in the output dictionary...{Style.RESET_ALL}") # Output the updating message
+
+   most_similar_model, overall_similarity_score = max(similarity_scores, key=lambda x: (x[1] is not None, x[1])) # Get the most similar model and score
+   output_dict["Most Similar Model"].append(f"{most_similar_model} ({overall_similarity_score}%)") # Update most similar model
+
 def run_tasks(df):
    """
    Run the tasks in the DataFrame.
@@ -238,6 +251,7 @@ def run_tasks(df):
       task_results = run_task_on_each_model(models_object_list, task_description, output_dict) # Run the task on each AI model
 
       similarity_scores = compute_similarity_for_models(models_object_list, task_results, expected_output, output_dict) # Compute similarity scores
+      update_most_similar_model(similarity_scores, output_dict) # Update most similar model in the output dictionary
 
    return output_dict # Return the output list
 
