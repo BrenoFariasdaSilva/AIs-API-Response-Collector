@@ -3,12 +3,10 @@
 import atexit # For playing a sound when the program finishes
 import google.generativeai as genai # Import the Google AI Python SDK
 import os # For running a command in the terminal
-import sys # For exiting the program
 from colorama import Style # For coloring the terminal
-from dotenv import load_dotenv # For loading .env files
 from utils import BackgroundColors # Import Classes from ./utils.py
 from utils import OUTPUT_DIRECTORY # Import Constants from ./utils.py
-from utils import create_directory, play_sound, verbose_output, verify_filepath_exists, write_output_to_file # Import Functions from ./utils.py
+from utils import create_directory, play_sound, verbose_output, verify_env_file, write_output_to_file # Import Functions from ./utils.py
 
 class GeminiModel:
 	"""
@@ -22,33 +20,9 @@ class GeminiModel:
 	OUTPUT_FILE = f"{OUTPUT_DIRECTORY}Gemini_output.txt" # The path to the output file
 
 	def __init__(self): # Constructor
-		self.api_key = self.verify_env_file() # Verify the .env file and load the API key
+		self.api_key = verify_env_file(self.ENV_PATH, self.ENV_VARIABLE) # Verify the .env file and load the API key
 		self.model_name = "gemini-1.5-flash" # The model name
 		self.model = None # The AI model
-
-	def verify_env_file(self, env_path=ENV_PATH, key=ENV_VARIABLE):
-		"""
-		Verify if the .env file exists and if the desired key is present.
-
-		:param env_path: Path to the .env file.
-		:param key: The key to get in the .env file.
-		:return: The value of the key if it exists.
-		"""
-
-		verbose_output(true_string=f"{BackgroundColors.GREEN}Verifying the .env file...{Style.RESET_ALL}") # Output the verification message
-
-		if not verify_filepath_exists(env_path): # If the .env file does not exist
-			print(f"{BackgroundColors.RED}.env file not found at {BackgroundColors.CYAN}{env_path}{Style.RESET_ALL}") # Output the error message
-			sys.exit(1) # Exit the program
-
-		load_dotenv(env_path) # Load the .env file
-		api_key = os.getenv(key) # Get the value of the key
-
-		if not api_key: # If the key does not exist
-			print(f"{BackgroundColors.RED}Key {BackgroundColors.CYAN}{key}{BackgroundColors.RED} not found in .env file.{Style.RESET_ALL}") # Output the error message
-			sys.exit(1) # Exit the program
-
-		return api_key # Return the API key
 	
 	def configure_model(self, api_key):
 		"""
