@@ -55,8 +55,20 @@ class MistralModel:
 		:param task_message: The message to send to the AI model.
 		:return output: The output text.
 		"""
-	
-		pass # Do nothing
+
+		verbose_output(true_string=f"{BackgroundColors.GREEN}Running the ChatGPT AI Model...{Style.RESET_ALL}") # Output the running message
+
+		response = self.client.chat.complete( # Get the response from the AI model
+			model="mistral-large-latest", # The model to use
+			messages=[ # The messages to send
+				{
+					"role": "user", # The role of the user
+					"content": task_message, # The content of the message
+				}
+			]
+		)
+
+		return response.choices[0].message.content # Return the response
 
 def main():
 	"""
