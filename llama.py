@@ -5,6 +5,7 @@ import os # For running a command in the terminal
 import sys # For exiting the program
 from colorama import Style # For coloring the terminal
 from dotenv import load_dotenv # For loading .env files
+from openai import OpenAI # Import OpenAI client
 from utils import BackgroundColors # Import Classes from ./utils.py
 from utils import OUTPUT_DIRECTORY # Import Constants from ./utils.py
 from utils import create_directory, play_sound, verbose_output, verify_filepath_exists, write_output_to_file # Import Functions from ./utils.py
@@ -23,6 +24,7 @@ class LlamaModel:
 	def __init__(self): # Constructor
 		self.api_key = None # The API key
 		self.model = None # The AI model
+		self.client = None # Llama client
 
 	def verify_env_file(self, env_path=ENV_PATH, key=ENV_VARIABLE):
 		"""
