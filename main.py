@@ -142,7 +142,7 @@ def run_tasks(df):
    """
    Run the tasks in the DataFrame.
 
-   :param df: The DataFrame containing the tasks.
+   :param df: The DataFrame containing the tasks and the expected output.
    :return: The output dictionary.
    """
 
@@ -153,7 +153,7 @@ def run_tasks(df):
 
    for index, task in df.iterrows(): # Loop through each row in the DataFrame
       task_description = task.iloc[0] # Get the task description
-      print(f"{BackgroundColors.GREEN}Task {index + 1}: {BackgroundColors.CYAN}{task_description}{Style.RESET_ALL}") # Output the task
+      print(f"{BackgroundColors.GREEN}Task {index + 1}: {BackgroundColors.CYAN}{task_description}{Style.RESET_ALL}") # Output the task number and description
       expected_output = get_expected_output(task) # Get the expected output, if available
       output_dict["Expected Output"].append(expected_output) # Add the expected output to the dictionary
 
