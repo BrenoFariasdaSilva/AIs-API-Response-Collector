@@ -73,7 +73,8 @@ def get_models_object_list(models_object_names=EXECUTE_MODELS.values()):
 
 def initialize_dict(models_list):
    """
-   Initialize a dictionary with empty lists based on the models' module names.
+   Initialize a dictionary with empty lists based on the models' module names,
+   and include fields for "Expected Output" and "Similarity".
 
    :param models_list: The list of model objects.
    :return: The initialized dictionary.
@@ -81,7 +82,12 @@ def initialize_dict(models_list):
    
    verbose_output(true_string=f"{BackgroundColors.GREEN}Initializing the output dictionary...{Style.RESET_ALL}") # Output the initialization message
 
-   return {model.__module__.split(".")[-1].capitalize(): [] for model in models_list} # Return the initialized dictionary
+   output_dict = {model.__module__.split(".")[-1].capitalize(): [] for model in models_list} # Initialize the dictionary with model outputs and additional fields
+   
+   output_dict["Expected Output"] = [] # To store the "Expected Output"
+   output_dict["Similarity"] = [] # To store the similarity score
+   
+   return output_dict # Return the initialized dictionary
 
 def format_output(output):
    """
