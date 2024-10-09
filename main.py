@@ -96,21 +96,6 @@ def initialize_dict(models_list):
 
    return output_dict # Return the initialized dictionary
 
-def get_tasks_attributes(task):
-   """
-   Get the task description and expected output from the task DataFrame.
-
-   :param task: The task row from the DataFrame.
-   :return: Tuple of task_description and expected_output.
-   """
-
-   verbose_output(true_string=f"{BackgroundColors.GREEN}Getting the task description and expected output...{Style.RESET_ALL}") # Output the getting message
-
-   task_description = get_task_description(task) # Get the task description
-   expected_output = get_expected_output(task) # Get the expected output
-
-   return task_description, expected_output # Return the task description and expected output
-
 def get_task_description(task):
    """
    Get the task description from the task DataFrame.
@@ -134,6 +119,21 @@ def get_expected_output(task):
    verbose_output(true_string=f"{BackgroundColors.GREEN}Getting the expected output from the task...{Style.RESET_ALL}") # Output the getting message
 
    return task.get("Expected Output (Optional)", "") # Get the expected output from the task
+
+def get_tasks_attributes(task):
+   """
+   Get the task description and expected output from the task DataFrame.
+
+   :param task: The task row from the DataFrame.
+   :return: Tuple of task_description and expected_output.
+   """
+
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Getting the task description and expected output...{Style.RESET_ALL}") # Output the getting message
+
+   task_description = get_task_description(task) # Get the task description
+   expected_output = get_expected_output(task) # Get the expected output
+
+   return task_description, expected_output # Return the task description and expected output
 
 def format_output(output):
    """
