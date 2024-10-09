@@ -8,6 +8,8 @@ from copilot import CopilotModel # Import the CopilotModel class from ./copilot.
 from gemini import GeminiModel # Import the GeminiModel class from ./gemini.py
 from llama import LlamaModel # Import the LlamaModel class from ./llama.py
 from mistral import MistralModel # Import the MistralModel class from ./mistral.py
+from sklearn.feature_extraction.text import TfidfVectorizer # For calculating Cosine Similarity
+from sklearn.metrics.pairwise import cosine_similarity # To compute similarity
 from utils import BackgroundColors # Import Classes from ./utils.py
 from utils import START_PATH, OUTPUT_DIRECTORY # Import Constants from ./utils.py
 from utils import create_directory, play_sound, verbose_output # Import Functions from ./utils.py
@@ -150,6 +152,26 @@ def combine_model_outputs(task_results):
 
    return " ".join(task_results.values()) # Combine the results from all models
 
+def compute_similarity(output, expected_output):
+   """
+   Compute the similarity between the output and the expected output using Cosine Similarity.
+
+   :param output: The output text.
+   :param expected_output: The expected output text.
+   :return: The similarity percentage.
+   """
+
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Computing the similarity between the output and the expected output...{Style.RESET_ALL}") # Output the computation message
+
+   if pd.isna(expected_output) or not expected_output.strip(): # If the expected output is empty
+      return None # Return None
+   
+   vectorizer = TfidfVectorizer().fit_transform([output, expected_output]) # Fit the vectorizer and transform the output and expected output
+   vectors = vectorizer.toarray() # Convert the vectorizer to an array
+   similarity = cosine_similarity([vectors[0]], [vectors[1]])[0][0] # Compute the cosine similarity between the vectors
+
+   return round(similarity * 100, 2) # Return similarity as a percentage rounded to 2 decimal places
+
 def run_tasks(df):
    """
    Run the tasks in the DataFrame.
@@ -169,7 +191,11 @@ def run_tasks(df):
       expected_output = get_expected_output(task) # Get the expected output, if available
       output_dict["Expected Output"].append(expected_output) # Add the expected output to the dictionary
 
-      output_dict = run_task_on_each_model(models_object_list, task_description, output_dict) # Run the task on each AI model
+      task_results = run_task_on_each_model(models_object_list, task_description, output_dict) # Run the task on each AI model
+
+      combined_result = combine_model_outputs(task_results) # Combine the results from all models
+      similarity_score = compute_similarity(combined_result, expected_output) # Compute the similarity score
+      output_dict["Similarity"].append(similarity_score if similarity_score is not None else "N/A") # Add the similarity score to the output dictionary
 
    return output_dict # Return the output list
 
