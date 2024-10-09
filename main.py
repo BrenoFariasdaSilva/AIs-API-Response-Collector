@@ -116,6 +116,28 @@ def format_output(output):
    
    return " // ".join(lines) # Join the lines with " // "
 
+def run_task_on_each_model(models_object_list, task_description, output_dict):
+   """
+   Run the task on each AI model and store the results in the output dictionary.
+
+   :param models_object_list: The list of AI model objects.
+   :param task_description: The description of the task to run.
+   :param output_dict: The output dictionary to store results.
+   :return: A dictionary of task results from all models.
+   """
+
+   verbose_output(true_string=f"{BackgroundColors.GREEN}Running the task on each AI model...{Style.RESET_ALL}") # Output the running message
+
+   task_results = {} # Initialize the task results dictionary
+   for model in models_object_list: # Loop through each model object
+      model_name = model.__module__.split(".")[-1].capitalize() # Get the model's name
+      result = model.run(task_description) # Run the task using the model's "run" method
+      formatted_output = format_output(result) # Format the output
+      task_results[model_name] = formatted_output # Add the result to the task results dictionary
+      output_dict[model_name].append(format_output(formatted_output)) # Add the result to the output dictionary
+
+   return task_results # Return the task results dictionary
+
 def run_tasks(df):
    """
    Run the tasks in the DataFrame.
@@ -135,11 +157,7 @@ def run_tasks(df):
       expected_output = get_expected_output(task) # Get the expected output, if available
       output_dict["Expected Output"].append(expected_output) # Add the expected output to the dictionary
 
-      for model in models_object_list: # Loop through each model object
-         model_name = model.__module__.split(".")[-1].capitalize() # Get the model's name
-         result = model.run(task_description) # Run the task using the model's "run" method
-         formatted_result = format_output(result) # Format the result
-         output_dict[model_name].append(formatted_result) # Add the result to the output dictionary
+      output_dict = run_task_on_each_model(models_object_list, task_description, output_dict) # Run the task on each AI model
    
    return output_dict # Return the output list
 
