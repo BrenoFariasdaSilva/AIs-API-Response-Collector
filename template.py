@@ -66,9 +66,9 @@ def main():
 
 	print(f"{BackgroundColors.CLEAR_TERMINAL}{BackgroundColors.BOLD}{BackgroundColors.GREEN}Welcome to the {BackgroundColors.CYAN}ModelName AI Model{BackgroundColors.GREEN}!{Style.RESET_ALL}\n") # Output the welcome message
 
-	copilot = ModelName() # Create the ModelName object
+	modelname = ModelName() # Create the ModelName object
 	task_message = "Explain how to create a new branch in Git." # The task message
-	output = copilot.run(task_message) # Run the ModelName
+	output = modelname.run(task_message) # Run the ModelName
 	create_directory(os.path.abspath(OUTPUT_DIRECTORY), OUTPUT_DIRECTORY.replace(".", "")) # Create the output directory
 	write_output_to_file(output, ModelName.OUTPUT_FILE) # Write the output to the file
 
