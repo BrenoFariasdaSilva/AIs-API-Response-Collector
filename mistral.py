@@ -1,3 +1,5 @@
+# API Guide: https://docs.mistral.ai/getting-started/clients/
+
 import atexit # For playing a sound when the program finishes
 import os # For running a command in the terminal
 import sys # For exiting the program
