@@ -31,7 +31,7 @@ The project aims to facilitate in-depth analysis and comparison of AI models, ma
 
 <div align="center">
   
-![RepoBeats Statistics](https://repobeats.axiom.co/api/embed/c3dc0781c48b858aa67277de5761edef5014aeb3.svg "Repobeats analytics image")
+![RepoBeats Statistics](https://repobeats.axiom.co/api/embed/6f80b5c63dd7b9a6f69d11ed28e3cb82c3cff382.svg "Repobeats analytics image")
 
 </div>
 
