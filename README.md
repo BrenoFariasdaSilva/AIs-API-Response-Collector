@@ -54,7 +54,11 @@ The project aims to facilitate in-depth analysis and comparison of AI models, ma
       - [MacOS](#macos)
       - [Windows](#windows)
     - [Dependencies](#dependencies)
-    - [Dataset - Optional](#dataset---optional)
+    - [Input Prompts/Texts](#input-promptstexts)
+      - [Task Column](#task-column)
+      - [Expected Output (Optional) Column](#expected-output-optional-column)
+      - [Example of `input.csv`:](#example-of-inputcsv)
+      - [Notes:](#notes)
   - [Usage](#usage)
   - [Results - Optional](#results---optional)
   - [Contributing](#contributing)
@@ -195,13 +199,38 @@ make dependencies
 
 This command will generate virtual environment and install all the dependencies needed to run the project in the virtual environment.
 
-### Dataset - Optional
+### Input Prompts/Texts
 
-1. Download the dataset from [WEBSITE-HERE]() and place it in this project directory `(/AIs-API-Response-Collector)` and run the following command:
+To set up the input for this project, you need to populate the `Inputs/input.csv` file. This file will contain the tasks or text prompts that the AI models will process and, optionally, the expected output for each task. The comparison between the models' outputs and the expected results will be based on these entries. Follow the steps below to properly configure the input file:
 
-```bash
-make dataset
+1. Navigate to the `Inputs` directory in the project folder.
+2. Open the `input.csv` file.
+3. Ensure that the file has the following header:
+   ```
+   Task,Expected Output (Optional)
+   ```
+
+#### Task Column
+- This column is mandatory and should contain the task or input text you want to provide to the AI models and must be surrounded by double quotes, in order to avoid any issues with the commas that break the csv file.
+- Each line represents a separate task for evaluation.
+- Examples of tasks might include questions, statements, or instructions for the models to interpret and respond to.
+
+#### Expected Output (Optional) Column
+- This column is optional and should contain the expected output you anticipate from the AI models for the corresponding task and must be surrounded by double quotes, in order to avoid any issues with the commas that break the csv file.
+- If provided, the model's output will be compared to this expected result, and a similarity score will be computed.
+- Leaving this column blank will disable the comparison for that specific task.
+
+#### Example of `input.csv`:
+```csv
+Task,Expected Output (Optional)
+"Explain the 'sudo' command in Linux.","The 'sudo' command in Linux allows a permitted user to execute a command as the superuser or another user, as specified by the security policy."
+"Explain the 'chmod' command in Linux.","The 'chmod' command in Linux changes the permissions of a file or directory."
 ```
+
+#### Notes:
+- Make sure each task is clear and concise to ensure the AI models can generate appropriate responses.
+- If you want to test model outputs without expecting a specific result, you can leave the "Expected Output (Optional)" column blank. The system will still process the task but won't perform any comparisons.
+- You can add as many tasks as needed, with or without expected outputs, to the `input.csv` file. The system will automatically process each task in the file.
 
 ## Usage
 
