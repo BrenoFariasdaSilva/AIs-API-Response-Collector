@@ -292,26 +292,10 @@ We thank the following people who contributed to this project:
 <table>
   <tr>
     <td align="center">
-      <a href="#" title="defina o titulo do link">
-        <img src="https://github.com/BrenoFariasdaSilva/AIs-API-Response-Collector/blob/main/.assets/Images/Github.svg" width="100px;" alt="My Profile Picture"/><br>
+      <a href="https://github.com/BrenoFariasdaSilva" title="Breno Farias da Silva">
+        <img src="https://github.com/BrenoFariasdaSilva/Worked-Example-Miner/blob/main/.assets/Images/BrenoFarias.jpg" width="100px;" alt="My Profile Picture"/><br>
         <sub>
-          <b>Breno Farias da Silva</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#" title="defina o titulo do link">
-        <img src="https://github.com/BrenoFariasdaSilva/AIs-API-Response-Collector/blob/main/.assets/Images/Github.svg" width="100px;" alt="My Profile Picture"/><br>
-        <sub>
-          <b>Breno Farias da Silva</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#" title="defina o titulo do link">
-        <img src="https://github.com/BrenoFariasdaSilva/AIs-API-Response-Collector/blob/main/.assets/Images/Github.svg" width="100px;" alt="My Profile Picture"/><br>
-        <sub>
-          <b>Breno Farias da Silva</b>
+          <b><a href="https://github.com/BrenoFariasdaSilva">Breno Farias da Silva</a></b>
         </sub>
       </a>
     </td>
