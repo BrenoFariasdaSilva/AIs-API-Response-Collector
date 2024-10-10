@@ -8,7 +8,7 @@
   
 ---
 
-This Python-based tool integrates with a range of AI APIs, including OpenAI's GPT-3.5, Google's Gemini, Meta's Llama, and Microsoft's Copilot and Mistral language models. Users can submit requests and retrieve responses for the same input, with collected responses organized and stored in a CSV file for easy comparison and analysis. The tool computes similarities based on the expected outputs of the AIs, enabling users to evaluate the performance of different models efficiently. With a focus on usability, this automated solution streamlines the process of performance assessment across multiple AI platforms.
+This Python-based tool integrates with a range of AI APIs, including OpenAI's ChatGPT, Google's Gemini, Meta's Llama, Microsoft's Copilot and Mistral language models. Users can submit requests and retrieve responses for the same input, with collected responses organized and stored in a CSV file for easy comparison and analysis. The tool computes similarities based on the expected outputs of the AIs, enabling users to evaluate the performance of different models efficiently. With a focus on usability, this automated solution streamlines the process of performance assessment across multiple AI platforms.
 
 The project aims to facilitate in-depth analysis and comparison of AI models, making it an essential resource for researchers, developers, and enthusiasts in the field of Artificial Intelligence.
 
@@ -214,7 +214,7 @@ This command will generate virtual environment and install all the dependencies 
 
 ## Usage
 
-In this section, you will learn how to use the project. The project is a tool that interacts with various AI APIs, including OpenAI's GPT-3.5, Google's Gemini, Meta's Llama, and Microsoft's Copilot and Mistral language models. Users can submit requests and retrieve responses for the same input, with collected responses organized and stored in a CSV file for easy comparison and analysis. The tool computes similarities based on the expected outputs of the AIs, enabling users to evaluate the performance of different models efficiently. With a focus on usability, this automated solution streamlines the process of performance assessment across multiple AI platforms.
+In this section, you will learn how to use the project. The project is a tool that interacts with various AI APIs, including OpenAI's ChatGPT, Google's Gemini, Meta's Llama, Microsoft's Copilot and Mistral language models. Users can submit requests and retrieve responses for the same input, with collected responses organized and stored in a CSV file for easy comparison and analysis. The tool computes similarities based on the expected outputs of the AIs, enabling users to evaluate the performance of different models efficiently. With a focus on usability, this automated solution streamlines the process of performance assessment across multiple AI platforms.
 
 ### Input Prompts/Texts
 
