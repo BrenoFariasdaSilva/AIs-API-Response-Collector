@@ -178,11 +178,22 @@ Great, you now have python3 and pip installed. Now, we need to install the proje
 
 ### Dependencies
 
+This project depends on the following libraries:
+
+- [Google.generativeai](https://pypi.org/project/google.generativeai/) -> Google Generative AI is used to interact with the Google API.
+- [Mistralai](https://pypi.org/project/mistralai/) -> Mistral AI is used to interact with the Mistral API.
+- [NumPy](https://numpy.org/) -> NumPy is used to generate the linear prediction of the linear regression and to many operations in the list of the metrics.
+- [Openai](https://pypi.org/project/openai/) -> OpenAI is used to interact with the OpenAI API.
+- [Pandas](https://pandas.pydata.org/) -> Pandas is used mainly to read and write the csv files.
+- [SciKit-Learn](https://scikit-learn.org/stable/) -> SciKit-Learn is used to generate the linear prediction of the linear regression.
+
 1. Install the project dependencies with the following command:
 
 ```bash
 make dependencies
 ```
+
+This command will generate virtual environment and install all the dependencies needed to run the project in the virtual environment.
 
 ### Dataset - Optional
 
