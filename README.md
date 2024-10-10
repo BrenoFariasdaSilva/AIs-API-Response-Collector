@@ -54,12 +54,12 @@ The project aims to facilitate in-depth analysis and comparison of AI models, ma
       - [MacOS](#macos)
       - [Windows](#windows)
     - [Dependencies](#dependencies)
+  - [Usage](#usage)
     - [Input Prompts/Texts](#input-promptstexts)
       - [Task Column](#task-column)
       - [Expected Output (Optional) Column](#expected-output-optional-column)
       - [Example of `input.csv`:](#example-of-inputcsv)
       - [Notes:](#notes)
-  - [Usage](#usage)
   - [Results - Optional](#results---optional)
   - [Contributing](#contributing)
   - [Collaborators](#collaborators)
@@ -199,6 +199,10 @@ make dependencies
 
 This command will generate virtual environment and install all the dependencies needed to run the project in the virtual environment.
 
+## Usage
+
+In this section, you will learn how to use the project. The project is a tool that interacts with various AI APIs, including OpenAI's GPT-3.5, Google's PaLM, and Cohere's language models. Users can submit requests and retrieve responses for the same input, with collected responses organized and stored in a CSV file for easy comparison and analysis. The tool computes similarities based on the expected outputs of the AIs, enabling users to evaluate the performance of different models efficiently. With a focus on usability, this automated solution streamlines the process of performance assessment across multiple AI platforms.
+
 ### Input Prompts/Texts
 
 To set up the input for this project, you need to populate the `Inputs/input.csv` file. This file will contain the tasks or text prompts that the AI models will process and, optionally, the expected output for each task. The comparison between the models' outputs and the expected results will be based on these entries. Follow the steps below to properly configure the input file:
@@ -232,13 +236,23 @@ Task,Expected Output (Optional)
 - If you want to test model outputs without expecting a specific result, you can leave the "Expected Output (Optional)" column blank. The system will still process the task but won't perform any comparisons.
 - You can add as many tasks as needed, with or without expected outputs, to the `input.csv` file. The system will automatically process each task in the file.
 
-## Usage
+After setting up the input file and the API keys, you must open the `main.py` file and modify a few constants in order to customize the project to your needs. The constants that you can modify are:
+```python
+EXECUTE_MODELS = {"ChatGPT": "ChatGPTModel", "Copilot": "CopilotModel", "Gemini": "GeminiModel", "Llama": "LlamaModel", "Mistral": "MistralModel"}
+```
 
+The `EXECUTE_MODELS` constant is a dictionary that contains the name of the model and the name of the class that will be executed. You can remove models from this dictionary if you don't want to execute them or if you simply don't have the API key for them. In order to add a new model, you must create a new class using the `template.py` file as a template and implement the new model's logic. After that, you can get the model's name and the class name and add them to the `EXECUTE_MODELS` dictionary.
+
+Lastly, open the `utils.py` file and modify the `VERBOSE` constant to true if you want the program to output everything that is being done. I personally never set it to true, only for debugging purposes.
+
+Finally, as you have set up the input file, the API keys, and the constants in the `main.py` file, you can run the project.
 In order to run the project, run the following command:
 
 ```bash
-make run
+make
 ```
+
+This command will always ensure that the virtual env and the dependencies are installed and then run the project.
 
 ## Results - Optional
 
