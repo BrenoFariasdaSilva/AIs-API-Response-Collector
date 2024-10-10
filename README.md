@@ -63,6 +63,15 @@ The project aims to facilitate in-depth analysis and comparison of AI models, ma
   - [Output/Results](#outputresults)
     - [Example of Output](#example-of-output)
     - [Input](#input)
+    - [Example of Output](#example-of-output-1)
+      - [Task: Explain the 'sudo' command in Linux](#task-explain-the-sudo-command-in-linux)
+      - [Expected Output:](#expected-output)
+        - [Copilot Response (Similarity: 44.56%):](#copilot-response-similarity-4456)
+        - [Gemini Response (Similarity: 49.92%):](#gemini-response-similarity-4992)
+    - [Task: Explain the 'chmod' command in Linux](#task-explain-the-chmod-command-in-linux)
+      - [Expected Output:](#expected-output-1)
+      - [Copilot Response (Similarity: 37.21%):](#copilot-response-similarity-3721)
+      - [Gemini Response (Similarity: 55.32%):](#gemini-response-similarity-5532)
   - [Contributing](#contributing)
   - [Collaborators](#collaborators)
   - [License](#license)
@@ -286,6 +295,44 @@ Task,Expected Output (Optional)
 "Explain the 'sudo' command in Linux.","The 'sudo' command in Linux allows a permitted user to execute a command as the superuser or another user, as specified by the security policy."
 "Explain the 'chmod' command in Linux.","The 'chmod' command in Linux changes the permissions of a file or directory."
 ```
+
+### Example of Output
+
+Based on the tasks and models executed (Gemini and Copilot), here are the computed similarity metrics and model responses for each task. These results provide insight into how well the models perform against the expected outputs.
+
+#### Task: Explain the 'sudo' command in Linux
+
+#### Expected Output:
+"The 'sudo' command in Linux allows a permitted user to execute a command as the superuser or another user, as specified by the security policy."
+- **Most Similar Model**: Gemini (49.92%)
+- **Minimum Similarity**: 44.56%
+- **Maximum Similarity**: 49.92%
+- **Average Similarity**: 47.24%
+- **Median Similarity**: 47.24%
+- **Standard Deviation Similarity**: 2.68%
+
+##### Copilot Response (Similarity: 44.56%):
+"• sudo is a command in Linux that allows a user to run a command with elevated privileges, usually as the root user or another privileged user. • It stands for 'Super User Do'. • When a command is run with sudo, it prompts the user for their password to verify their identity. • Once authenticated, the command is executed with the privileges of the specified user, allowing access to protected files and system resources. • sudo is often used to perform administrative tasks that require elevated privileges, such as installing software, modifying system configurations, or managing services. • It provides a way to control access to critical system operations and helps prevent unauthorized changes that could potentially harm the system."
+
+##### Gemini Response (Similarity: 49.92%):
+"The sudo command in Linux is a powerful tool that allows you to execute commands with the privileges of another user, typically the root user (also known as superuser). It stands for 'superuser do'. // Here's how it works: // 1. Authentication: When you type sudo followed by a command, the system prompts you for your password. This is to ensure that you are authorized to use the elevated privileges. // 2. Privilege Escalation: If your password is correct, sudo temporarily grants you the permissions of the specified user (usually root). // 3. Command Execution: The command you entered is then executed with the elevated privileges. // 4. Privilege Reversion: Once the command finishes, your privileges revert back to your normal user account. // Why use sudo? // * Security: It's generally considered unsafe to log in as root directly. sudo allows you to perform specific tasks with elevated privileges without compromising the entire system. // * Convenience: It's easier to use sudo for occasional tasks requiring root access than logging in as root every time. // * Fine-grained Control: You can configure sudo to allow specific users to execute specific commands with root privileges, enhancing security and control."
+
+### Task: Explain the 'chmod' command in Linux
+
+#### Expected Output:
+"The 'chmod' command in Linux changes the permissions of a file or directory."
+- **Most Similar Model**: Gemini (55.32%)
+- **Minimum Similarity**: 37.21%
+- **Maximum Similarity**: 55.32%
+- **Average Similarity**: 46.26%
+- **Median Similarity**: 46.26%
+- **Standard Deviation Similarity**: 9.06%
+
+#### Copilot Response (Similarity: 37.21%):
+"• chmod is a command used in Linux to change the permissions of files and directories. • It stands for 'change mode'. • It modifies the read, write, and execute permissions for the owner, group, and others. • The general syntax is chmod [OPTIONS] MODE FILE.... • OPTIONS can include: • -c to display a message for each file that is changed. • -R to recursively change the permissions of directories and their contents. • -v to show a message for each file processed. • MODE specifies the desired permissions using a symbolic or numeric representation. • Symbolic representation uses letters: u for user/owner, g for group, o for others, a for all. • Numeric representation uses a 3-digit octal number: the first digit represents the owner, the second digit represents the group, and the third digit represents others. Each digit is a sum of the desired permissions: 4 for read, 2 for write, 1 for execute."
+
+#### Gemini Response (Similarity: 55.32%):
+"The chmod command in Linux is used to change the permissions of files and directories. Permissions determine who can access a file or directory and what they can do with it. // Understanding Permissions: // Linux uses a system of three sets of permissions: // * Owner: The user who created the file or directory. // * Group: A group of users who have specific access rights. // * Others: All other users on the system. // Each set of permissions has three types: // * Read (r): Allows viewing the contents of a file or listing the contents of a directory. // * Write (w): Allows modifying the contents of a file or adding/removing files/directories within a directory. // * Execute (x): Allows running a file (if it's an executable) or entering a directory."
 
 ## Contributing
 
