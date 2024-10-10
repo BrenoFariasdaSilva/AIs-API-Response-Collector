@@ -1,6 +1,6 @@
 <div align="center">
   
-# [AIs-API-Response-Collector.](https://github.com/BrenoFariasdaSilva/AIs-API-Response-Collector) <img src="https://github.com/BrenoFariasdaSilva/AIs-API-Response-Collector/blob/main/.assets/Icon/AI.svg"  width="4%" height="4%">
+# [Multi-AI-API-Response-Collector.](https://github.com/BrenoFariasdaSilva/Multi-AI-API-Response-Collector) <img src="https://github.com/BrenoFariasdaSilva/Multi-AI-API-Response-Collector/blob/main/.assets/Icon/AI.svg"  width="4%" height="4%">
 
 </div>
 
@@ -18,14 +18,14 @@ The project aims to facilitate in-depth analysis and comparison of AI models, ma
 
 <div align="center">
 
-![GitHub Code Size in Bytes](https://img.shields.io/github/languages/code-size/BrenoFariasdaSilva/AIs-API-Response-Collector)
-![GitHub Commits](https://img.shields.io/github/commit-activity/t/BrenoFariasDaSilva/AIs-API-Response-Collector/main)
-![GitHub Last Commit](https://img.shields.io/github/last-commit/BrenoFariasdaSilva/AIs-API-Response-Collector)
-![GitHub Forks](https://img.shields.io/github/forks/BrenoFariasDaSilva/AIs-API-Response-Collector)
-![GitHub Language Count](https://img.shields.io/github/languages/count/BrenoFariasDaSilva/AIs-API-Response-Collector)
-![GitHub License](https://img.shields.io/github/license/BrenoFariasdaSilva/AIs-API-Response-Collector)
-![GitHub Stars](https://img.shields.io/github/stars/BrenoFariasdaSilva/AIs-API-Response-Collector)
-![wakatime](https://wakatime.com/badge/github/BrenoFariasdaSilva/AIs-API-Response-Collector.svg)
+![GitHub Code Size in Bytes](https://img.shields.io/github/languages/code-size/BrenoFariasdaSilva/Multi-AI-API-Response-Collector)
+![GitHub Commits](https://img.shields.io/github/commit-activity/t/BrenoFariasDaSilva/Multi-AI-API-Response-Collector/main)
+![GitHub Last Commit](https://img.shields.io/github/last-commit/BrenoFariasdaSilva/Multi-AI-API-Response-Collector)
+![GitHub Forks](https://img.shields.io/github/forks/BrenoFariasDaSilva/Multi-AI-API-Response-Collector)
+![GitHub Language Count](https://img.shields.io/github/languages/count/BrenoFariasDaSilva/Multi-AI-API-Response-Collector)
+![GitHub License](https://img.shields.io/github/license/BrenoFariasdaSilva/Multi-AI-API-Response-Collector)
+![GitHub Stars](https://img.shields.io/github/stars/BrenoFariasdaSilva/Multi-AI-API-Response-Collector)
+![wakatime](https://wakatime.com/badge/github/BrenoFariasdaSilva/Multi-AI-API-Response-Collector.svg)
 
 </div>
 
@@ -36,7 +36,7 @@ The project aims to facilitate in-depth analysis and comparison of AI models, ma
 </div>
 
 ## Table of Contents
-- [AIs-API-Response-Collector. ](#ais-api-response-collector-)
+- [Multi-AI-API-Response-Collector. ](#Multi-AI-API-Response-Collector-)
   - [Table of Contents](#table-of-contents)
   - [Setup](#setup)
     - [Clone the repository](#clone-the-repository)
@@ -86,8 +86,8 @@ In this section, you will learn how to set up the project. The setup process inc
 1. Clone the repository with the following command:
 
 ```bash
-git clone https://github.com/BrenoFariasDaSilva/AIs-API-Response-Collector.git
-cd AIs-API-Response-Collector
+git clone https://github.com/BrenoFariasDaSilva/Multi-AI-API-Response-Collector.git
+cd Multi-AI-API-Response-Collector
 ```
 
 ### Generate API Key
