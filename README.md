@@ -79,6 +79,8 @@ The project aims to facilitate in-depth analysis and comparison of AI models, ma
 
 ## Setup
 
+In this section, you will learn how to set up the project. The setup process includes cloning the repository, generating API keys for the AI models, and configuring the `.env` file with the API keys.
+
 ### Clone the repository
 
 1. Clone the repository with the following command:
